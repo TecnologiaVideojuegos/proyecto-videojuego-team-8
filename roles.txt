@@ -1,0 +1,12 @@
+luismi:sonido, si eso ayuda en programacion
+miguel:sonido,,si eso ayuda en programacion
+alvaro:programador jefe
+almudena:artista(diseño de nivel)
+guille:programacion y diseño de nivel(ayuda a almudena )
+
+
+vista lateral con varias salas 
+enemigos (ratas,murcielagos,animales nocturnos etc, y un boss final (loco de manicomio))
+manicomio 2 plantas (baja y sotano)
+video introductorio(introduccion a la narrativa)
+vidio final (para acabar  el juego)
