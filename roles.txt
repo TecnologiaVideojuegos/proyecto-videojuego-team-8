@@ -10,3 +10,5 @@ enemigos (ratas,murcielagos,animales nocturnos etc, y un boss final (loco de man
 manicomio 2 plantas (baja y sotano)
 video introductorio(introduccion a la narrativa)
 vidio final (para acabar  el juego)
+
+idea visual[https://www.google.es/search?q=abandoned+hospital+unity&source=lnms&tbm=isch&sa=X&ved=0ahUKEwia8uW25oLaAhVBXBQKHYtmDtIQ_AUICigB&biw=1366&bih=637]
