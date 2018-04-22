@@ -1,0 +1,15 @@
+Documento de trabajao personal para el 27 de abril
+
+
+Tareas a realizar por los miembros del equipo:
+
+Guillermo y Almudena: Mapa del manicomio y personaje terminados.
+
+Miguel: 2 puzzles (Ya cometamos por el grupo algunas ideas. A tu elección).
+
+Alvaro: Código (Mirar el tema de usar los objetos, movimiento del personaje por el mapa).
+
+Luismi: 2 puzzles (Como hemos comentado, haré un mini-juego de pongo y un pequño laberinto).
+
+El viernes 27 empezaremos a montar todo el hilo de la historia. LLevar preparados estos puntos (ya sea en el ordeandor personal 
+o subidos a git) para dejar esta semana hecha la mayor parte de la carga de trabajo del videjuego.
