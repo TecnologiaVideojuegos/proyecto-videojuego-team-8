@@ -1,0 +1,8 @@
+git pull https://github.com/TecnologiaVideojuegos/proyecto-videojuego-team-8
+mkdir escenario
+git add escenario
+git commit -m escenario
+git push -u origin master
+
+
+fl studio demo

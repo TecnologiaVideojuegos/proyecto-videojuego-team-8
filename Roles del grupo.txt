@@ -1,0 +1,24 @@
+luismi:sonido, si eso ayuda en programacion
+miguel:sonido,,si eso ayuda en programacion
+alvaro:programador jefe
+almudena:artista(diseño de nivel)
+guille:programacion y diseño de nivel(ayuda a almudena )
+
+
+vista lateral con varias salas 
+enemigos (ratas,murcielagos,animales nocturnos etc, y un boss final (loco de manicomio))
+manicomio 2 plantas (baja y sotano)
+video introductorio(introduccion a la narrativa)
+vidio final (para acabar  el juego)
+
+idea visual[https://www.google.es/search?q=abandoned+hospital+unity&source=lnms&tbm=isch&sa=X&ved=0ahUKEwia8uW25oLaAhVBXBQKHYtmDtIQ_AUICigB&biw=1366&bih=637]
+
+
+
+
+
+que los niveles sean circulales para dar sensacion de exploracion
+
+
+jugabilidad===>las habitaciones que se puedan hacer para explorar (tipo que se puedan ver las cosas de objetos que haya etc)
+
