@@ -63,11 +63,11 @@ public class WorldMap extends BasicGameState{
         Input input = gc.getInput();
         
         //Building 1 entrance
-        if ((characterPositionX > -203 && characterPositionX < -130)){
-            if(Mouse.isButtonDown(0)){
+        if (input.isKeyDown(Input.KEY_J )&&(characterPositionX > -203 && characterPositionX < -130)){
+             
                 sbg.enterState(2);
             }
-        }
+        
         
         //right movement
         if(input.isKeyDown(Input.KEY_D)){
