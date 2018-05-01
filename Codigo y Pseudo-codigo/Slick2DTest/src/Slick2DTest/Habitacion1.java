@@ -61,13 +61,11 @@ public class Habitacion1 extends BasicGameState{
 
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {    
         Input input = gc.getInput();
-        
-        //Building 1 entrance
-        if ((characterPositionX > -703 && characterPositionX < -661)){
-            if(Mouse.isButtonDown(0)){
+        if (input.isKeyDown(Input.KEY_J )&&(characterPositionX > -703 && characterPositionX < -661)){
+             
                 sbg.enterState(1);
             }
-        }
+
         
         //right movement
         if(input.isKeyDown(Input.KEY_D)){
