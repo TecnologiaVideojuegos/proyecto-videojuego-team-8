@@ -1,4 +1,3 @@
-
 package Slick2DTest;
 
 import org.newdawn.slick.GameContainer;
@@ -9,7 +8,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class Habitacion1 extends BasicGameState {
+public class Habitacion3 extends BasicGameState {
 
      //Animation character, moveLeft, moveRight,moveUp,moveDown;
     Image conejo;
@@ -21,7 +20,7 @@ public class Habitacion1 extends BasicGameState {
     
     @Override
     public int getID() {
-        return 3;
+        return 5;
     }
 
     @Override
