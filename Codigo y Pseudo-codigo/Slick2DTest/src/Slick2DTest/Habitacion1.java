@@ -1,109 +1,78 @@
+
 package Slick2DTest;
 
-
-import org.lwjgl.input.Mouse;
-import org.newdawn.slick.*;
-import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
-import org.newdawn.slick.Renderable;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class Habitacion1 extends BasicGameState{
+public class Habitacion1 extends BasicGameState {
+
+     //Animation character, moveLeft, moveRight,moveUp,moveDown;
+    Image conejo;
+    private Image habitacion;
+    //int[] duration = {200,200};
+    private Input entrada;
+    float characterPositionX = 580,  characterPositionY = 648;
+    BasicGameState prevState = Principal.prevState;
     
-    Animation character, moveLeft, moveRight;
-    Image interior;
-    
-    int[] duration = {400,400};
-    boolean escapemenu = false;
-    
-    float characterPositionX = 0;
-    float characterPositionY = 0;
-    float shiftX = characterPositionX ;
-    float shiftY = characterPositionY + 300;
-    
-    Habitacion1(int habitacion1) {
-    }
-  
+    @Override
     public int getID() {
-        return 2;
+        return 3;
     }
 
+    @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        interior = new Image("Imagen/interior.jpg");
-        
-        Image[] walkLeft = {new Image("Imagen/conejo.png"),new Image("Imagen/conejo.png")}; 
-        Image[] walkRight = {new Image("Imagen/conejo.png"),new Image("Imagen/conejo.png")};
-        
-        moveRight = new Animation(walkRight,duration,false);
-        moveLeft = new Animation(walkRight,duration,false);
-        character =moveLeft;
+       this.habitacion = new Image("res/interior.jpg");
+       this.conejo = new Image("res/conejo.png");
+       Principal.prevState = this;
     }
 
+    @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        interior.draw(characterPositionX,characterPositionY);
-        character.draw(shiftX,shiftY);
-        g.drawString("CharacterX: " +characterPositionX+" CharacterY:"+characterPositionY, 400, 200);
-    
-        if(escapemenu){
-            g.drawString("Resume (R)", 400, 330);
-            g.drawString("Main Menu (M)", 400, 280);
-            g.drawString("Quit (Q)", 400, 230);
-            if (!escapemenu){
-                g.clear();
-            }
-           
-        }
+        this.habitacion.drawCentered(960,540);
+        this.conejo.draw(characterPositionX,characterPositionY);
+        
+        g.drawString("CharacterX: " +characterPositionX+" CharacterY:"+characterPositionY, 960, 540);
     }
 
-    public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {    
-        Input input = gc.getInput();
+    @Override
+    public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
+         entrada = gc.getInput();
         
         //Building 1 entrance
-        if ((characterPositionX > -703 && characterPositionX < -661)){
-            if(Mouse.isButtonDown(0)){
+        if ((characterPositionX > 1217 && characterPositionX < 1260)){
+            if(entrada.isKeyDown(Input.KEY_J)){
                 sbg.enterState(1);
             }
         }
         
-        //right movement
-        if(input.isKeyDown(Input.KEY_D)){
-            character =moveRight;
-            characterPositionX -= i * .1f;
-                if (characterPositionX < -957){
-                    characterPositionX += i *.1f;
-                }
+        if(entrada.isKeyDown(Input.KEY_I)){
+            Principal.prevState2 = this;
+            sbg.enterState(6);
         }
         
-        //left movement
-        if(input.isKeyDown(Input.KEY_A)){
-            character =moveLeft;
+        if(entrada.isKeyDown(Input.KEY_D)){
             characterPositionX += i * .1f;
-                if (characterPositionX > 517){
+            if (characterPositionX > 1307){
                     characterPositionX -= i *.1f;
-                }
+            }
         }
         
-        if(input.isKeyDown(Input.KEY_ESCAPE)){
-            escapemenu = true;
+        if(entrada.isKeyDown(Input.KEY_A)){
+            characterPositionX -= i * .1;
+            if (characterPositionX < 557){
+                    characterPositionX += i *.1f;
+            }
         }
         
-       if (escapemenu){
-           if(input.isKeyDown(Input.KEY_R)){
-               escapemenu = false;
-           }
-           if (input.isKeyDown(Input.KEY_M)){
-               sbg.enterState(0);
-           }
-           if (input.isKeyDown(Input.KEY_Q)){
-               System.exit(0);
-           }
-           
-       }
+        if(entrada.isKeyDown(Input.KEY_ESCAPE)){
+            Principal.prevState = this;
+            sbg.enterState(2);
+        }
     }
-      
+    
 }
-
