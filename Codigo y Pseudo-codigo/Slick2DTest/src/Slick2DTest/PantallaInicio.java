@@ -30,19 +30,13 @@ public class PantallaInicio extends BasicGameState{
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-       fondo = new Image("res/Umbral.jpg");
+       fondo = new Image("res/Inicio.png");
     }
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         
         fondo.drawCentered(683,384);//683 y 384
-        g.setColor(Color.white);
-        g.fillRect(683,334,37,20);
-        g.fillRect(683,434,37,20);
-        g.setColor(Color.black);
-        g.drawString("Play", 683, 334);
-        g.drawString("Exit", 683, 434);
         
     }
 
@@ -54,13 +48,13 @@ public class PantallaInicio extends BasicGameState{
         System.out.println("X:"+posX+" Y:"+posY);
         
         //play button
-        if ((posX > 683 && posX < 995) && (posY > 334 && posY < 585)){
+        if ((posX > 523 && posX < 870) && (posY > 348 && posY < 400)){
             if(Mouse.isButtonDown(0)){
                 sbg.enterState(1);
             }
         }
         //exit button
-        if ((posX > 683 && posX < 998) && (posY > 434 && posY < 487)){
+        if ((posX > 523 && posX < 870) && (posY >273 && posY < 322)){
             if(Mouse.isButtonDown(0)){
             System.exit(0);
             }

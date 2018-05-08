@@ -11,8 +11,9 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Hall1 extends BasicGameState{
     
-    Animation character, moveLeft, moveRight,nomove;
+    Animation character, moveLeft, moveRight,nomoveright,nomoveleft;
     private Image hall;
+    boolean sideright=true;
     int[] duration = {200,200,200,200};
     private Input entrada;
     float characterPositionX = 24,  characterPositionY = 406;
@@ -26,16 +27,18 @@ public class Hall1 extends BasicGameState{
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
        this.hall = new Image("res/hall.jpg");
-       Image[] walkRight = {new Image("res/personaje2.png"),new Image("res/personaje3.png"),new Image("res/personaje4.png"),new Image("res/personaje5.png")}; 
-       Image[] walkLeft = {new Image("res/personaje2.png"),new Image("res/personaje3.png"),new Image("res/personaje4.png"),new Image("res/personaje5.png")};
-       Image[] nowalk = {new Image("res/personaje1.png"),new Image("res/personaje1.png"),new Image("res/personaje1.png"),new Image("res/personaje1.png")};
+       Principal.prevState = this;
+       Image[] walkRight = {new Image("res/B.ANIM_1.png"),new Image("res/B.ANIM_2.png"),new Image("res/B.ANIM_3.png"),new Image("res/B.ANIM_4.png")}; 
+       Image[] walkLeft = {new Image("res/B.ANIM_1_OPUESTO.png"),new Image("res/B.ANIM_2_OPUESTO.png"),new Image("res/B.ANIM_3_OPUESTO.png"),new Image("res/B.ANIM_4_OPUESTO.png")};
+       Image[] nowalkright = {new Image("res/B.STANCE.png"),new Image("res/B.STANCE.png"),new Image("res/B.STANCE.png"),new Image("res/B.STANCE.png")};
+       Image[] nowalkleft = {new Image("res/B.STANCE_OPUESTO.png"),new Image("res/B.STANCE_OPUESTO.png"),new Image("res/B.STANCE_OPUESTO.png"),new Image("res/B.STANCE_OPUESTO.png")};
         
        moveRight = new Animation(walkRight, duration, true);
        moveLeft = new Animation(walkLeft,duration,true);
-       nomove = new Animation(nowalk,duration,true);
-      
-       character = nomove;
-
+       nomoveright = new Animation(nowalkright,duration,true);
+       nomoveleft = new Animation(nowalkleft,duration,true);
+       
+       character = nomoveright;
     }
 
     @Override
@@ -58,11 +61,16 @@ public class Hall1 extends BasicGameState{
             sbg.enterState(7);
         }
         
-        if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)){
-                character = nomove;
+        if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& sideright){ 
+            character = nomoveright;
+            }
+        
+        if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& !sideright){
+                character = nomoveleft;
             }
         
         if(entrada.isKeyDown(Input.KEY_D)){
+            sideright = true;
             character = moveRight;
             characterPositionX += i * .1f;
             if (characterPositionX > 1150){
@@ -71,6 +79,7 @@ public class Hall1 extends BasicGameState{
         }
         
         if(entrada.isKeyDown(Input.KEY_A)){
+            sideright = false;
             character = moveLeft;
             characterPositionX -= i * .1f;
             if (characterPositionX < -66){
