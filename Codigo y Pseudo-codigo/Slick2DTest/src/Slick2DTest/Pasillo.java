@@ -12,9 +12,8 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Pasillo extends BasicGameState{
     
-    Animation character, moveLeft, moveRight,nomove;
-    Image personaje1;
-    Image p;
+    Animation character, moveLeft, moveRight,nomoveright,nomoveleft;
+    boolean sideright=true;    
     private Image pasillo;
     int[] duration = {200,200,200,200};
     private Input entrada;
@@ -32,18 +31,18 @@ public class Pasillo extends BasicGameState{
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
        this.pasillo = new Image("res/pasillo.jpg");
        
-       personaje1 = new Image("res/personaje1.png");
-      
        Principal.prevState = this;
-       Image[] walkRight = {new Image("res/personaje2.png"),new Image("res/personaje3.png"),new Image("res/personaje4.png"),new Image("res/personaje5.png")}; 
-       Image[] walkLeft = {new Image("res/personaje2.png"),new Image("res/personaje3.png"),new Image("res/personaje4.png"),new Image("res/personaje5.png")};
-       Image[] nowalk = {new Image("res/personaje1.png"),new Image("res/personaje1.png"),new Image("res/personaje1.png"),new Image("res/personaje1.png")};
+       Image[] walkRight = {new Image("res/B.ANIM_1.png"),new Image("res/B.ANIM_2.png"),new Image("res/B.ANIM_3.png"),new Image("res/B.ANIM_4.png")}; 
+       Image[] walkLeft = {new Image("res/B.ANIM_1_OPUESTO.png"),new Image("res/B.ANIM_2_OPUESTO.png"),new Image("res/B.ANIM_3_OPUESTO.png"),new Image("res/B.ANIM_4_OPUESTO.png")};
+       Image[] nowalkright = {new Image("res/B.STANCE.png"),new Image("res/B.STANCE.png"),new Image("res/B.STANCE.png"),new Image("res/B.STANCE.png")};
+       Image[] nowalkleft = {new Image("res/B.STANCE_OPUESTO.png"),new Image("res/B.STANCE_OPUESTO.png"),new Image("res/B.STANCE_OPUESTO.png"),new Image("res/B.STANCE_OPUESTO.png")};
         
        moveRight = new Animation(walkRight, duration, true);
        moveLeft = new Animation(walkLeft,duration,true);
-       nomove = new Animation(nowalk,duration,true);
-      
-       character = nomove;
+       nomoveright = new Animation(nowalkright,duration,true);
+       nomoveleft = new Animation(nowalkleft,duration,true);
+       
+       character = nomoveright;
 
     }
 
@@ -61,13 +60,6 @@ public class Pasillo extends BasicGameState{
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         
         entrada = gc.getInput();
-        
-        //Building 1 entrance
-        /*if ((characterPositionX > 665 && characterPositionX < 747) && 
-           (entrada.isKeyDown(Input.KEY_J))){
-                Principal.prevState = this;
-                sbg.enterState(4);
-            }*/
         
         if ((characterPositionX > 1221)){
                 Principal.prevState = this;
@@ -102,16 +94,22 @@ public class Pasillo extends BasicGameState{
                 sbg.enterState(6);
             }
 
-        if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)){
-                character = nomove;
+        if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& sideright){ 
+            character = nomoveright;
+            }
+        
+        if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& !sideright){
+                character = nomoveleft;
             }
         
         if(entrada.isKeyDown(Input.KEY_D)){
+            sideright = true;
             character = moveRight;
             characterPositionX += i * .10f;
         }
         
         if(entrada.isKeyDown(Input.KEY_A)){
+            sideright = false;
             character = moveLeft;
             characterPositionX -= i * .10f;
         }
