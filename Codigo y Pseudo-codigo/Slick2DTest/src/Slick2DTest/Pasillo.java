@@ -17,9 +17,9 @@ public class Pasillo extends BasicGameState{
     private Image pasillo;
     int[] duration = {200,200,200,200};
     private Input entrada;
-        float characterPositionX = 24,  characterPositionY = 406;
+    float characterPositionX = 24,  characterPositionY = 406;
     BasicGameState prevState = Principal.prevState;
-
+    private Principal principal;
 
 
     @Override
@@ -30,6 +30,8 @@ public class Pasillo extends BasicGameState{
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
        this.pasillo = new Image("res/pasillo.jpg");
+       
+       principal = new Principal();
        
        Principal.prevState = this;
        Image[] walkRight = {new Image("res/B.ANIM_1.png"),new Image("res/B.ANIM_2.png"),new Image("res/B.ANIM_3.png"),new Image("res/B.ANIM_4.png")}; 
@@ -83,10 +85,19 @@ public class Pasillo extends BasicGameState{
             }
         
         if ((characterPositionX > 561 && characterPositionX < 700) && 
-           (entrada.isKeyDown(Input.KEY_J))){
+           (entrada.isKeyDown(Input.KEY_J))&&(principal.isLlave())){
                 Principal.prevState = this;
                 sbg.enterState(5);
             }
+        
+        if ((characterPositionX > 561 && characterPositionX < 700) && 
+           (entrada.isKeyDown(Input.KEY_J))&&(!principal.isLlave())){
+                Principal.prevState = this;
+                System.out.println(principal.isLlave());
+                sbg.enterState(9);
+            }
+        
+        
         
         if ((characterPositionX > 1087 && characterPositionX < 1221) && 
            (entrada.isKeyDown(Input.KEY_J))){

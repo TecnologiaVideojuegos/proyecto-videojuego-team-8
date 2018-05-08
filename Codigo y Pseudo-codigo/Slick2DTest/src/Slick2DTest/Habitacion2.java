@@ -18,6 +18,11 @@ public class Habitacion2 extends BasicGameState {
     private Input entrada;
     float characterPositionX = 250,  characterPositionY = 406;
     BasicGameState prevState = Principal.prevState;
+    MinijuegoLlave minijuego;
+
+    public Habitacion2(MinijuegoLlave minijuego) {
+        this.minijuego = minijuego;
+    }
     
     
     @Override
@@ -80,8 +85,8 @@ public class Habitacion2 extends BasicGameState {
             sideright = true;
             character = moveRight;
             characterPositionX += i * .1f;
-            if (characterPositionX > 939){
-                    characterPositionX -= i *.10f;
+           if (characterPositionX > 939 ){
+                    characterPositionX -= i *.1f;
             }
         }
         

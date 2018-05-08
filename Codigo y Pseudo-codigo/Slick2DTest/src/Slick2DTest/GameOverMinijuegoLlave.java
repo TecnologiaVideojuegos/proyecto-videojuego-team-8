@@ -1,0 +1,49 @@
+package Slick2DTest;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.BasicGameState;
+import org.newdawn.slick.state.StateBasedGame;
+
+public class GameOverMinijuegoLlave extends BasicGameState{
+    MinijuegoLlave minijuego;
+    Input entrada;
+    Principal principal;
+
+    public GameOverMinijuegoLlave(MinijuegoLlave minijuego) {
+        this.minijuego = minijuego;
+    }
+    
+    public void init(GameContainer arg0, StateBasedGame arg1){
+        try {
+            principal = new Principal();
+        } catch (SlickException ex) {
+            Logger.getLogger(GameOverMinijuegoLlave.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+       public void render(GameContainer arg0, StateBasedGame arg1, Graphics g){        
+        g.drawString("Has Perdido", 300, 300);
+    }
+    
+    
+    public void update(GameContainer gc, StateBasedGame sbg, int arg2){
+        entrada = gc.getInput();
+        principal.setPuntuacionMinijuegoLlave(0);
+        principal.setVidasMinijuegoLlave(3);
+              if (entrada.isKeyDown(Input.KEY_SPACE)){
+                sbg.enterState (2);
+           }
+    }
+    
+ 
+    public int getID() {
+        return 10;
+    }    
+    
+}
+
