@@ -14,7 +14,7 @@ public class Principal extends StateBasedGame{
         
         try{
         AppGameContainer contenedor = new AppGameContainer(new Principal());
-        contenedor.setDisplayMode(1920, 1080, false);
+        contenedor.setDisplayMode(1366,768, false);
         contenedor.setShowFPS(false);
         contenedor.start();
        }catch(SlickException slick){
@@ -23,8 +23,6 @@ public class Principal extends StateBasedGame{
        }       
     }
   
-    
-
     public Principal() throws SlickException {
         super("Hellsingly");
        
@@ -36,10 +34,12 @@ public class Principal extends StateBasedGame{
        this.addState(new Pasillo());
        this.addState(new EscapeMenu());
        this.addState(new Habitacion1());
-       this.addState(new Habitacion2(inventario));
+       this.addState(new Habitacion2());
        this.addState(new Habitacion3());
        this.addState(new Inventario());
+       this.addState(new Recepcion());
+       this.addState(new Hall1());
       
-    }
-    
+    }    
+
 }

@@ -19,7 +19,7 @@ private boolean meter = true;
 
     @Override
     public int getID() {
-        return 6;
+        return 7;
     }
 
     @Override
@@ -29,8 +29,7 @@ private boolean meter = true;
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        this.inventario.drawCentered(960,540);
-        //g.drawString("tuberia", 236, 434);
+        this.inventario.drawCentered(683,384);
     }
 
     @Override

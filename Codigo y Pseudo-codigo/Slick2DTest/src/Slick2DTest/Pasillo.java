@@ -18,19 +18,19 @@ public class Pasillo extends BasicGameState{
     private Image pasillo;
     int[] duration = {200,200,200,200};
     private Input entrada;
-    float characterPositionX = 580,  characterPositionY = 648;
+        float characterPositionX = 24,  characterPositionY = 406;
     BasicGameState prevState = Principal.prevState;
 
 
 
     @Override
     public int getID() {
-       return 1;
+       return 2;
     }
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-       this.pasillo = new Image("res/mapa.jpg");
+       this.pasillo = new Image("res/pasillo.jpg");
        
        personaje1 = new Image("res/personaje1.png");
       
@@ -50,10 +50,10 @@ public class Pasillo extends BasicGameState{
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         
-        this.pasillo.drawCentered(960,540);
+        this.pasillo.drawCentered(683,384);//fondo.drawCentered(683,384);//683 y 384
         this.character.draw(characterPositionX,characterPositionY);
         
-        g.drawString("CharacterX: " +characterPositionX+" CharacterY:"+characterPositionY, 960, 540);
+        g.drawString("CharacterX: " +characterPositionX+" CharacterY:"+characterPositionY, 683, 384);
         
     }
 
@@ -63,27 +63,43 @@ public class Pasillo extends BasicGameState{
         entrada = gc.getInput();
         
         //Building 1 entrance
-        if ((characterPositionX > 665 && characterPositionX < 747) && 
+        /*if ((characterPositionX > 665 && characterPositionX < 747) && 
            (entrada.isKeyDown(Input.KEY_J))){
                 Principal.prevState = this;
-                sbg.enterState(3);
+                sbg.enterState(4);
+            }*/
+        
+        if ((characterPositionX > 1221)){
+                Principal.prevState = this;
+                sbg.enterState(8);
+            }
+        
+        if ((characterPositionX < -67)){
+                Principal.prevState = this;
+                sbg.enterState(1);
             }
         
         if(entrada.isKeyDown(Input.KEY_I)){
             Principal.prevState2 = this;
-            sbg.enterState(6);
+            sbg.enterState(7);
         }
         
-        if ((characterPositionX > 855 && characterPositionX < 964) && 
+        if ((characterPositionX > 21 && characterPositionX < 158) && 
            (entrada.isKeyDown(Input.KEY_J))){
                 Principal.prevState = this;
                 sbg.enterState(4);
             }
         
-        if ((characterPositionX > 1104 && characterPositionX < 1177) && 
+        if ((characterPositionX > 561 && characterPositionX < 700) && 
            (entrada.isKeyDown(Input.KEY_J))){
                 Principal.prevState = this;
                 sbg.enterState(5);
+            }
+        
+        if ((characterPositionX > 1087 && characterPositionX < 1221) && 
+           (entrada.isKeyDown(Input.KEY_J))){
+                Principal.prevState = this;
+                sbg.enterState(6);
             }
 
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)){
@@ -92,23 +108,17 @@ public class Pasillo extends BasicGameState{
         
         if(entrada.isKeyDown(Input.KEY_D)){
             character = moveRight;
-            characterPositionX += i * .1f;
-            if (characterPositionX > 1328){
-                    characterPositionX -= i *.1f;
-            }  
+            characterPositionX += i * .10f;
         }
         
         if(entrada.isKeyDown(Input.KEY_A)){
             character = moveLeft;
-            characterPositionX -= i * .1f;
-            if (characterPositionX < 540){
-                    characterPositionX += i *.1f;
-            }
+            characterPositionX -= i * .10f;
         }
         
         if(entrada.isKeyDown(Input.KEY_ESCAPE)){
             Principal.prevState = this;
-            sbg.enterState(2);
+            sbg.enterState(3);
         }
                
 }

@@ -4,7 +4,6 @@ package Slick2DTest;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
@@ -17,7 +16,7 @@ public class EscapeMenu extends BasicGameState {
     
     @Override
     public int getID() {
-        return 2;
+        return 3;
     }
 
     @Override
@@ -29,9 +28,9 @@ public class EscapeMenu extends BasicGameState {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         
         g.setColor(Color.white);
-        g.drawString("Resume (R)", 960, 440);
-        g.drawString("Main Menu (M)", 960, 540);
-        g.drawString("Quit (Q)", 960, 640);
+        g.drawString("Resume (R)", 683, 334);//fondo.drawCentered(683,384);//683 y 384
+        g.drawString("Main Menu (M)", 683, 384);
+        g.drawString("Quit (Q)", 683, 434);
         
         
         

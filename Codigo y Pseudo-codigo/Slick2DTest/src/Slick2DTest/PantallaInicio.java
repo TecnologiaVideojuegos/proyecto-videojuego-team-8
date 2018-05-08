@@ -36,13 +36,13 @@ public class PantallaInicio extends BasicGameState{
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         
-        fondo.drawCentered(960,540);
+        fondo.drawCentered(683,384);//683 y 384
         g.setColor(Color.white);
-        g.fillRect(960, 490,37,20);
-        g.fillRect(960, 590,37,20);
+        g.fillRect(683,334,37,20);
+        g.fillRect(683,434,37,20);
         g.setColor(Color.black);
-        g.drawString("Play", 960, 490);
-        g.drawString("Exit", 960, 590);
+        g.drawString("Play", 683, 334);
+        g.drawString("Exit", 683, 434);
         
     }
 
@@ -54,13 +54,13 @@ public class PantallaInicio extends BasicGameState{
         System.out.println("X:"+posX+" Y:"+posY);
         
         //play button
-        if ((posX > 960 && posX < 995) && (posY > 574 && posY < 585)){
+        if ((posX > 683 && posX < 995) && (posY > 334 && posY < 585)){
             if(Mouse.isButtonDown(0)){
                 sbg.enterState(1);
             }
         }
         //exit button
-        if ((posX > 960 && posX < 998) && (posY > 474 && posY < 487)){
+        if ((posX > 683 && posX < 998) && (posY > 434 && posY < 487)){
             if(Mouse.isButtonDown(0)){
             System.exit(0);
             }
