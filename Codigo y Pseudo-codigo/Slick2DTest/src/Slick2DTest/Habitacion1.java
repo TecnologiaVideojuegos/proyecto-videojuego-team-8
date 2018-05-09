@@ -1,5 +1,6 @@
 package Slick2DTest;
 
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -12,12 +13,19 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Habitacion1 extends BasicGameState {
 
     Animation character, moveLeft, moveRight,nomoveright,nomoveleft;
-    boolean sideright= true;
-    private Image habitacion;
+    boolean sideright, ratonpulsado;
+    private Image habitacion, habitacion1,habitacion2,habitacion3;
     int[] duration = {200,200,200,200};
+    private Principal principal;
+    int escenas = 0;
     private Input entrada;
     float characterPositionX = 250,  characterPositionY = 406;
     BasicGameState prevState = Principal.prevState;
+
+    public Habitacion1(Principal principal) {
+        this.principal = principal;
+    }
+
     
     
     @Override
@@ -28,7 +36,10 @@ public class Habitacion1 extends BasicGameState {
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
        this.habitacion = new Image("res/habitacion1.jpg");
-       
+       this.habitacion1 = new Image ("res/habitacion1-1.jpg");
+       this.habitacion2 = new Image ("res/habitacion1-2.jpg");
+       this.habitacion3 = new Image ("res/habitacion1-3.jpg");
+      
        Principal.prevState = this;
        Image[] walkRight = {new Image("res/B.ANIM_1.png"),new Image("res/B.ANIM_2.png"),new Image("res/B.ANIM_3.png"),new Image("res/B.ANIM_4.png")}; 
        Image[] walkLeft = {new Image("res/B.ANIM_1_OPUESTO.png"),new Image("res/B.ANIM_2_OPUESTO.png"),new Image("res/B.ANIM_3_OPUESTO.png"),new Image("res/B.ANIM_4_OPUESTO.png")};
@@ -44,13 +55,12 @@ public class Habitacion1 extends BasicGameState {
     }
 
     @Override
-    public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+    public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {        
         this.habitacion.drawCentered(683,384);
         this.character.draw(characterPositionX,characterPositionY);
-        
         g.drawString("CharacterX: " +characterPositionX+" CharacterY:"+characterPositionY, 683, 384);
     }
-
+    
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
          entrada = gc.getInput();
@@ -68,7 +78,7 @@ public class Habitacion1 extends BasicGameState {
             }
         
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& !sideright){
-                character = nomoveleft;
+            character = nomoveleft;
             }
         
         if(entrada.isKeyDown(Input.KEY_I)){
@@ -76,12 +86,17 @@ public class Habitacion1 extends BasicGameState {
             sbg.enterState(7);
         }
         
+            if(characterPositionX >655){
+            sbg.enterState(12);
+            characterPositionX = 250;
+        }
+        
         if(entrada.isKeyDown(Input.KEY_D)){
             sideright = true;
             character = moveRight;
             characterPositionX += i * .1f;
             if (characterPositionX > 939){
-                    characterPositionX -= i *.10f;
+                    characterPositionX -= i *.1f;
             }
         }
         

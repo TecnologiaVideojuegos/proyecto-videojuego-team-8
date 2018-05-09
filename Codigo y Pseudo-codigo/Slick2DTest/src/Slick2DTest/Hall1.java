@@ -26,7 +26,7 @@ public class Hall1 extends BasicGameState{
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-       this.hall = new Image("res/hall.jpg");
+       this.hall = new Image("res/hallfantasma.jpg");
        Principal.prevState = this;
        Image[] walkRight = {new Image("res/B.ANIM_1.png"),new Image("res/B.ANIM_2.png"),new Image("res/B.ANIM_3.png"),new Image("res/B.ANIM_4.png")}; 
        Image[] walkLeft = {new Image("res/B.ANIM_1_OPUESTO.png"),new Image("res/B.ANIM_2_OPUESTO.png"),new Image("res/B.ANIM_3_OPUESTO.png"),new Image("res/B.ANIM_4_OPUESTO.png")};
@@ -57,13 +57,39 @@ public class Hall1 extends BasicGameState{
         entrada = gc.getInput();
         
         if(entrada.isKeyDown(Input.KEY_I)){
-            Principal.prevState2 = this;
+            
             sbg.enterState(7);
         }
+                       
+        if (characterPositionX >760){
+                    sbg.enterState(22);
+                    characterPositionX = 700;
+            }
         
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& sideright){ 
             character = nomoveright;
             }
+        
+        if(Principal.de32a8){
+            characterPositionX = Principal.characterPositionX8;
+            if(entrada.isKeyDown(Input.KEY_D)){
+            sideright = true;
+            character = moveRight;
+            Principal.characterPositionX8  += i * .1f;
+                if (Principal.characterPositionX8 > 1150){
+                    Principal.characterPositionX8 -= i *.1f;
+                }
+            }
+        
+            if(entrada.isKeyDown(Input.KEY_A)){
+                sideright = false;
+                character = moveLeft;
+                Principal.characterPositionX8 -= i * .1f;
+                if (Principal.characterPositionX8 < -66){
+                    sbg.enterState(2);
+                }
+            }
+        }
         
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& !sideright){
                 character = nomoveleft;
