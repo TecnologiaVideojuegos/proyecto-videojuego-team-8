@@ -16,7 +16,7 @@ public class Recepcion extends BasicGameState{
     int[] duration = {200,200,200,200};
     private Input entrada;
     boolean sideright=true;
-    float characterPositionX = 24,  characterPositionY = 406;
+    float characterPositionX = 24,  characterPositionY = 376;
     BasicGameState prevState = Principal.prevState;
 
     @Override

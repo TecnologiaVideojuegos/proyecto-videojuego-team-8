@@ -16,7 +16,7 @@ public class Habitacion3 extends BasicGameState {
     private Image habitacion;
     int[] duration = {200,200,200,200};
     private Input entrada;
-    float characterPositionX = 250,  characterPositionY = 406;
+    float characterPositionX = 250,  characterPositionY = 376;
     BasicGameState prevState = Principal.prevState;
     
     
@@ -27,7 +27,7 @@ public class Habitacion3 extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-       this.habitacion = new Image("res/habitacion2rota.jpg");
+       this.habitacion = new Image("res/habitacion2-rota.jpg");
        
        Principal.prevState = this;
        Image[] walkRight = {new Image("res/B.ANIM_1.png"),new Image("res/B.ANIM_2.png"),new Image("res/B.ANIM_3.png"),new Image("res/B.ANIM_4.png")}; 

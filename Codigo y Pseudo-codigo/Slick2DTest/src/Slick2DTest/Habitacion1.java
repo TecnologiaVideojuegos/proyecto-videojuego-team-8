@@ -19,7 +19,7 @@ public class Habitacion1 extends BasicGameState {
     private Principal principal;
     int escenas = 0;
     private Input entrada;
-    float characterPositionX = 250,  characterPositionY = 406;
+    float characterPositionX = 250,  characterPositionY = 376;
     BasicGameState prevState = Principal.prevState;
 
     public Habitacion1(Principal principal) {
@@ -35,7 +35,7 @@ public class Habitacion1 extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-       this.habitacion = new Image("res/habitacion1.jpg");
+       this.habitacion = new Image("res/habitacion1-fantasma.jpg");
        this.habitacion1 = new Image ("res/habitacion1-1.jpg");
        this.habitacion2 = new Image ("res/habitacion1-2.jpg");
        this.habitacion3 = new Image ("res/habitacion1-3.jpg");

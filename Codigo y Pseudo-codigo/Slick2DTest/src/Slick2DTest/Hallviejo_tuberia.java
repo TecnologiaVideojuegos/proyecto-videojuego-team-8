@@ -16,7 +16,7 @@ public class Hallviejo_tuberia extends BasicGameState{
     boolean sideright=true;
     int[] duration = {200,200,200,200};
     private Input entrada;
-    float characterPositionX = 24,  characterPositionY = 406;
+    float characterPositionX = 24,  characterPositionY = 376;
     BasicGameState prevState = Principal.prevState;
 
     @Override

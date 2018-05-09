@@ -16,7 +16,7 @@ public class Habitacion2 extends BasicGameState {
     private Image habitacion;
     int[] duration = {200,200,200,200};
     private Input entrada;
-    float characterPositionX = 250,  characterPositionY = 406;
+    float characterPositionX = 250,  characterPositionY = 376;
     BasicGameState prevState = Principal.prevState;
     MinijuegoLlave minijuego;
 
