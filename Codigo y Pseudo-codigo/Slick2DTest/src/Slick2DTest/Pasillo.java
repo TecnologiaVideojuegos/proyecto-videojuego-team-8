@@ -63,7 +63,7 @@ public class Pasillo extends BasicGameState{
         
         entrada = gc.getInput();
         
-        if ((characterPositionX > 1221)){
+        if ((characterPositionX > 1195)&& (principal.isLlave())){
                 Principal.prevState = this;
                 sbg.enterState(8);
             }
@@ -73,24 +73,21 @@ public class Pasillo extends BasicGameState{
                 sbg.enterState(1);
             }
         
-        if(entrada.isKeyDown(Input.KEY_I)){
-            Principal.prevState2 = this;
-            sbg.enterState(7);
-        }
+       
         
-        if ((characterPositionX > 21 && characterPositionX < 158) && 
+        if ((characterPositionX > 154 && characterPositionX < 256) && 
            (entrada.isKeyDown(Input.KEY_J))){
                 Principal.prevState = this;
                 sbg.enterState(4);
             }
         
-        if ((characterPositionX > 561 && characterPositionX < 700) && 
+        if ((characterPositionX > 575 && characterPositionX < 680) && 
            (entrada.isKeyDown(Input.KEY_J))&&(principal.isLlave())){
                 Principal.prevState = this;
                 sbg.enterState(5);
             }
         
-        if ((characterPositionX > 561 && characterPositionX < 700) && 
+        if ((characterPositionX > 575 && characterPositionX < 680) && 
            (entrada.isKeyDown(Input.KEY_J))&&(!principal.isLlave())){
                 Principal.prevState = this;
                 System.out.println(principal.isLlave());
@@ -99,7 +96,7 @@ public class Pasillo extends BasicGameState{
         
         
         
-        if ((characterPositionX > 1087 && characterPositionX < 1221) && 
+        if ((characterPositionX > 983 && characterPositionX < 1091) && 
            (entrada.isKeyDown(Input.KEY_J))){
                 Principal.prevState = this;
                 sbg.enterState(6);
@@ -117,6 +114,9 @@ public class Pasillo extends BasicGameState{
             sideright = true;
             character = moveRight;
             characterPositionX += i * .10f;
+            if ((characterPositionX > 1195)&& (!principal.isLlave())){
+                characterPositionX -= i * .10f;
+            }
         }
         
         if(entrada.isKeyDown(Input.KEY_A)){
