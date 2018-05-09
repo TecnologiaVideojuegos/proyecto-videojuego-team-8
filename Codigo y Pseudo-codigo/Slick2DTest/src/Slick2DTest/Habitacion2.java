@@ -76,10 +76,7 @@ public class Habitacion2 extends BasicGameState {
                 character = nomoveleft;
             }
         
-        if(entrada.isKeyDown(Input.KEY_I)){
-            Principal.prevState2 = this;
-            sbg.enterState(7);
-        }
+       
         
         if(entrada.isKeyDown(Input.KEY_D)){
             sideright = true;

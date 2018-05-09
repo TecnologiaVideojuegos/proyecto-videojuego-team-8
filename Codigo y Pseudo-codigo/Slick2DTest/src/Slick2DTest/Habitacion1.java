@@ -81,10 +81,7 @@ public class Habitacion1 extends BasicGameState {
             character = nomoveleft;
             }
         
-        if(entrada.isKeyDown(Input.KEY_I)){
-            Principal.prevState2 = this;
-            sbg.enterState(7);
-        }
+        
         
             if(characterPositionX >655){
             sbg.enterState(12);

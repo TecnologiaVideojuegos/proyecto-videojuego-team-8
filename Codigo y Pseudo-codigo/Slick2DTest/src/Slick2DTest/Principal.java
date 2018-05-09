@@ -15,7 +15,6 @@ public class Principal extends StateBasedGame{
     public static BasicGameState prevState2  = null;
     public static int puntuacionMinijuegoLlave = 0;
     public static int vidasMinijuegoLlave = 3;
-    public static Inventario inventario = new Inventario();
     public static float characterPositionX8; 
 
     public static boolean isTuberia() {
@@ -72,7 +71,6 @@ public class Principal extends StateBasedGame{
        this.addState(new Habitacion1(this));
        this.addState(new Habitacion2(minijuego));
        this.addState(new Habitacion3());
-       this.addState(new Inventario());
        this.addState(new Recepcion());
        this.addState(new Hall1());
        this.addState(new MinijuegoLlave());

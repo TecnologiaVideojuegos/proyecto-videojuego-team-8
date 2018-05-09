@@ -56,10 +56,7 @@ public class Hall1 extends BasicGameState{
         
         entrada = gc.getInput();
         
-        if(entrada.isKeyDown(Input.KEY_I)){
-            
-            sbg.enterState(7);
-        }
+        
                        
         if (characterPositionX >760){
                     sbg.enterState(22);
