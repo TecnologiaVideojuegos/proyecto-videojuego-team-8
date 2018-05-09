@@ -97,6 +97,7 @@ public class Principal extends StateBasedGame{
        this.addState(new EscenaViejo9());
        this.addState(new EscenaViejo10());
        this.addState(new Hallviejo_tuberia());
+       this.addState(new Video_inicial());
        
     }    
 

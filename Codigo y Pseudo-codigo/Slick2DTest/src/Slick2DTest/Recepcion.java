@@ -60,7 +60,7 @@ public class Recepcion extends BasicGameState{
         //Building 1 entrance
         if ((characterPositionX > 1127)){
                 Principal.prevState = this;
-                sbg.enterState(2);
+                sbg.enterState(7);
             }
         
        
