@@ -9,25 +9,25 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class Habitacion3 extends BasicGameState {
+public class HabitacionAgujero extends BasicGameState {
 
     Animation character, moveLeft, moveRight,nomoveright,nomoveleft;
     boolean sideright=true;
-    private Image habitacion;
+    private Image habitacionagujero;
     int[] duration = {200,200,200,200};
     private Input entrada;
-    float characterPositionX = 250,  characterPositionY = 376;
+    float characterPositionX = 441,  characterPositionY = 376;
     BasicGameState prevState = Principal.prevState;
     
     
     @Override
     public int getID() {
-        return 6;
+        return 34;
     }
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-       this.habitacion = new Image("res/habitacion1grieta.jpg");
+       this.habitacionagujero = new Image("res/habitacion2-agujero.jpg");
        
        Principal.prevState = this;
        Image[] walkRight = {new Image("res/B.ANIM_1.png"),new Image("res/B.ANIM_2.png"),new Image("res/B.ANIM_3.png"),new Image("res/B.ANIM_4.png")}; 
@@ -45,7 +45,7 @@ public class Habitacion3 extends BasicGameState {
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        this.habitacion.drawCentered(683,384);
+        this.habitacionagujero.drawCentered(683,384);
         this.character.draw(characterPositionX,characterPositionY);
         
         g.drawString("CharacterX: " +characterPositionX+" CharacterY:"+characterPositionY, 683, 384);
@@ -54,18 +54,8 @@ public class Habitacion3 extends BasicGameState {
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
          entrada = gc.getInput();
+      
         
-        //Building 1 entrance
-        if (characterPositionX < 211){
-           {
-                sbg.enterState(2);
-                characterPositionX = 250;
-            }
-        }
-        
-        if (characterPositionX >= 567 && characterPositionX <= 629 && Principal.tuberia && entrada.isKeyDown(Input.KEY_J)){
-            sbg.enterState(33);
-        }
         
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& sideright){ 
             character = nomoveright;
@@ -75,14 +65,17 @@ public class Habitacion3 extends BasicGameState {
                 character = nomoveleft;
             }
         
-        
+        if (characterPositionX>= 431 && characterPositionX <= 496 && entrada.isKeyDown(Input.KEY_J) ){
+            sideright = false;
+            sbg.enterState(33);
+        }
         
         if(entrada.isKeyDown(Input.KEY_D)){
             sideright = true;
             character = moveRight;
             characterPositionX += i * .1f;
-            if (characterPositionX > 939){
-                    characterPositionX -= i *.10f;
+            if (characterPositionX > 931){
+                    characterPositionX -= i *.1f;
             }
         }
         
@@ -90,6 +83,9 @@ public class Habitacion3 extends BasicGameState {
             sideright = false;
             character = moveLeft;
             characterPositionX -= i * .1f;
+            /*if (characterPositionX < 233){
+                sbg.enterState(2);
+            }*/
         }
         
         if(entrada.isKeyDown(Input.KEY_ESCAPE)){
