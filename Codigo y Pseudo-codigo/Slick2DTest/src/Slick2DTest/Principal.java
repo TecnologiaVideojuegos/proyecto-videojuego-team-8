@@ -13,6 +13,7 @@ public class Principal extends StateBasedGame{
     public static boolean de32a8 = false;
     public static boolean viejo = false;
     public static boolean nina  = false; 
+    public static boolean chino  = false; 
     public static boolean botones  = false; 
     public static BasicGameState prevState  = null;
     public static BasicGameState prevState2  = null;
@@ -114,8 +115,23 @@ public class Principal extends StateBasedGame{
        this.addState(new BotonesCocina3());
        this.addState(new BotonesCocina4());
        this.addState(new BotonesCocina5());
+       this.addState(new Pasillo4());
        this.addState(new HabitacionAgujero3());
-       
+       this.addState(new PasilloFinal());
+       this.addState(new Habitacion3_1());
+       this.addState(new EscenaChinoNegro1());
+       this.addState(new EscenaChinoNegro2());
+       this.addState(new EscenaChinoNegro3());
+       this.addState(new EscenaChinoNegro4());
+       this.addState(new EscenaChinoNegro5());
+       this.addState(new EscenaChinoNegro6());
+       this.addState(new EscenaChinoNegro7());
+       this.addState(new EscenaChinoNegro8());
+       this.addState(new EscenaChinoNegro9());
+       this.addState(new EscenaChinoNegro10());
+       this.addState(new EscenaChinoNegro11());
+       this.addState(new EscenaChinoNegro12());
+       this.addState(new EscenaChinoNegro13());
     }    
 
 }

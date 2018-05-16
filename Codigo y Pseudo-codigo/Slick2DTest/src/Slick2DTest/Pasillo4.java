@@ -51,7 +51,7 @@ public class Pasillo4 extends BasicGameState{
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         
-        this.pasillo.drawCentered(683,384);//fondo.drawCentered(683,384);//683 y 384
+        this.pasillo.drawCentered(683,384);
         this.character.draw(characterPositionX,characterPositionY);
         
         g.drawString("CharacterX: " +characterPositionX+" CharacterY:"+characterPositionY, 683, 384);

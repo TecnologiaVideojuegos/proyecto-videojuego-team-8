@@ -9,29 +9,25 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+public class Habitacion3_1 extends BasicGameState {
 
-public class PasilloFinal extends BasicGameState{
-    
     Animation character, moveLeft, moveRight,nomoveright,nomoveleft;
-    boolean sideright=true;    
-    private Image pasillo;
+    boolean sideright=true;
+    private Image habitacion;
     int[] duration = {200,200,200,200};
     private Input entrada;
-    float characterPositionX = 24,  characterPositionY = 376;
+    float characterPositionX = 250,  characterPositionY = 376;
     BasicGameState prevState = Principal.prevState;
-    private Principal principal;
-
-
+    
+    
     @Override
     public int getID() {
-       return 48;
+        return 49;
     }
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-       this.pasillo = new Image("res/pasillofinal.jpg");
-       
-       principal = new Principal();
+       this.habitacion = new Image("res/fantasma.jpg");
        
        Principal.prevState = this;
        Image[] walkRight = {new Image("res/B.ANIM_1.png"),new Image("res/B.ANIM_2.png"),new Image("res/B.ANIM_3.png"),new Image("res/B.ANIM_4.png")}; 
@@ -45,47 +41,28 @@ public class PasilloFinal extends BasicGameState{
        nomoveleft = new Animation(nowalkleft,duration,true);
        
        character = nomoveright;
-
     }
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        
-        this.pasillo.drawCentered(683,384);//fondo.drawCentered(683,384);//683 y 384
+        this.habitacion.drawCentered(683,384);
         this.character.draw(characterPositionX,characterPositionY);
         
         g.drawString("CharacterX: " +characterPositionX+" CharacterY:"+characterPositionY, 683, 384);
-        
     }
 
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
-        
-        entrada = gc.getInput();
-        
-        if ((characterPositionX > 1195)&& (principal.isLlave())){
-                Principal.prevState = this;
-                //sbg.enterState(8);
-            }
-        
-        if ((characterPositionX < -32)){
-                Principal.prevState = this;
-                sbg.enterState(46);
-            }
-        
+         entrada = gc.getInput();
        
-        
-        if ((characterPositionX > 154 && characterPositionX < 256) && 
-           (entrada.isKeyDown(Input.KEY_J))){
-                Principal.prevState = this;
-                sbg.enterState(49);
+        if (characterPositionX < 234){
+           {
+                sbg.enterState(48);
+                sideright = true;
+                characterPositionX = 250;
+                
             }
-        
-        if ((characterPositionX > 575 && characterPositionX < 680) && 
-           (entrada.isKeyDown(Input.KEY_J))&&(principal.isLlave())){
-                Principal.prevState = this;
-                sbg.enterState(5);
-            }
+        }
         
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& sideright){ 
             character = nomoveright;
@@ -95,26 +72,35 @@ public class PasilloFinal extends BasicGameState{
                 character = nomoveleft;
             }
         
+        if (characterPositionX > 719 && !Principal.chino){
+           {
+               Principal.chino = true;
+                sbg.enterState(50);
+                sideright = true;
+                characterPositionX = 250;
+                
+            }
+        }
+        
         if(entrada.isKeyDown(Input.KEY_D)){
             sideright = true;
             character = moveRight;
-            characterPositionX += i * .10f;
-            if ((characterPositionX > 1195)&& (!principal.isLlave())){
-                characterPositionX -= i * .10f;
+            characterPositionX += i * .1f;
+            if (characterPositionX > 939){
+                    characterPositionX -= i *.10f;
             }
         }
         
         if(entrada.isKeyDown(Input.KEY_A)){
             sideright = false;
             character = moveLeft;
-            characterPositionX -= i * .10f;
+            characterPositionX -= i * .1f;
         }
         
         if(entrada.isKeyDown(Input.KEY_ESCAPE)){
             Principal.prevState = this;
             sbg.enterState(3);
         }
-               
-}
-        
     }
+    
+}
