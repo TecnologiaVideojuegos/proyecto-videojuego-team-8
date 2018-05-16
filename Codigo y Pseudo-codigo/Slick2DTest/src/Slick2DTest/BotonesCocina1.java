@@ -1,63 +1,60 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Slick2DTest;
 
-import org.newdawn.slick.geom.*;
 import org.lwjgl.input.Mouse;
-
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-/**
- *
- * @author Alvaro
- */
-public class PantallaInicio extends BasicGameState{
+public class BotonesCocina1 extends BasicGameState{
+    
+    private Image cocinabotones;
+    boolean sideright=true;
+    int[] duration = {200,200,200,200};
+    private Input entrada;
+    BasicGameState prevState = Principal.prevState;
 
-    private Rectangle rect1 , rect2;
-    private Image fondo;
     @Override
     public int getID() {
-        return 0;
+       return 41;
     }
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-       fondo = new Image("res/Inicio.png");
+       this.cocinabotones = new Image("res/cocina2bgRANV.jpg");
+       Principal.prevState = this;
     }
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        
-        fondo.drawCentered(683,384);//683 y 384
-        
+        this.cocinabotones.drawCentered(683,384);
     }
 
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
-        int posX = Mouse.getX();
+        
+        entrada = gc.getInput();
+        
+       int posX = Mouse.getX();
         int posY = Mouse.getY();
         
         System.out.println("X:"+posX+" Y:"+posY);
         
-        //play button
-        if ((posX > 523 && posX < 870) && (posY > 348 && posY < 400)){
+        //green button
+        if ((posX > 531 && posX < 726) && (posY > 269 && posY < 465)){
             if(Mouse.isButtonDown(0)){
-                sbg.enterState(40);
+                sbg.enterState(42);
             }
         }
-        //exit button
-        if ((posX > 523 && posX < 870) && (posY >273 && posY < 322)){
-            if(Mouse.isButtonDown(0)){
-            System.exit(0);
-            }
+        
+        if(entrada.isKeyDown(Input.KEY_ESCAPE)){
+            Principal.prevState = this;
+            sbg.enterState(3);
         }
-    }
+               
 }
+        
+    }

@@ -63,9 +63,14 @@ public class Pasillo2 extends BasicGameState{
         
         entrada = gc.getInput();
         
-        if (characterPositionX > 1195){
+        if (characterPositionX > 1195 && !Principal.botones){
                 Principal.prevState = this;
                 sbg.enterState(39);
+                characterPositionX = 1192;
+            }
+        if (characterPositionX > 1195 && Principal.botones){
+                Principal.prevState = this;
+                sbg.enterState(46);
                 characterPositionX = 1192;
             }
         

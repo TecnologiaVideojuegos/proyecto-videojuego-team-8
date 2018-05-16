@@ -9,10 +9,10 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class Hall2 extends BasicGameState{
+public class Cocina extends BasicGameState{
     
     Animation character, moveLeft, moveRight,nomoveright,nomoveleft;
-    private Image hall;
+    private Image cocina;
     boolean sideright=true;
     int[] duration = {200,200,200,200};
     private Input entrada;
@@ -21,12 +21,12 @@ public class Hall2 extends BasicGameState{
 
     @Override
     public int getID() {
-       return 38;
+       return 40;
     }
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-       this.hall = new Image("res/hall.jpg");
+       this.cocina = new Image("res/cocina2botones.jpg");
        Principal.prevState = this;
        Image[] walkRight = {new Image("res/B.ANIM_1.png"),new Image("res/B.ANIM_2.png"),new Image("res/B.ANIM_3.png"),new Image("res/B.ANIM_4.png")}; 
        Image[] walkLeft = {new Image("res/B.ANIM_1_OPUESTO.png"),new Image("res/B.ANIM_2_OPUESTO.png"),new Image("res/B.ANIM_3_OPUESTO.png"),new Image("res/B.ANIM_4_OPUESTO.png")};
@@ -44,7 +44,7 @@ public class Hall2 extends BasicGameState{
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         
-        this.hall.drawCentered(683,384);
+        this.cocina.drawCentered(683,384);
         this.character.draw(characterPositionX,characterPositionY);
         
         g.drawString("CharacterX: " +characterPositionX+" CharacterY:"+characterPositionY, 683, 384);
@@ -59,17 +59,17 @@ public class Hall2 extends BasicGameState{
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& sideright){ 
             character = nomoveright;
             }
-        
-        if (characterPositionX < -32){
-            sbg.enterState(40);
+     
+        if (characterPositionX <707 && characterPositionX > 523 &&entrada.isKeyDown(Input.KEY_J)&& !Principal.botones){
+            sbg.enterState(41);
         }
         
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& !sideright){
                 character = nomoveleft;
             }
         if (characterPositionX > 1197){
-            sbg.enterState(35);
-            characterPositionX = 1167;
+            sbg.enterState(38);
+            
             }
         if(entrada.isKeyDown(Input.KEY_D)){
             sideright = true;
@@ -82,6 +82,9 @@ public class Hall2 extends BasicGameState{
             sideright = false;
             character = moveLeft;
             characterPositionX -= i * .1f;
+            if (characterPositionX < -32){
+                characterPositionX += i * .1f;
+            }
             
         }
         

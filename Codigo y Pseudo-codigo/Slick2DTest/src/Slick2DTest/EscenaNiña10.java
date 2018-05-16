@@ -33,7 +33,7 @@ public class EscenaNiña10 extends BasicGameState{
         entrada = gc.getInput();
         
         if(entrada.isMousePressed(Input.MOUSE_LEFT_BUTTON)){
-            sbg.enterState(5);
+            sbg.enterState(4);
        } 
     }
     

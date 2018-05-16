@@ -9,24 +9,30 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class Hall2 extends BasicGameState{
+
+public class Pasillo4 extends BasicGameState{
     
     Animation character, moveLeft, moveRight,nomoveright,nomoveleft;
-    private Image hall;
-    boolean sideright=true;
+    boolean sideright=true;    
+    private Image pasillo;
     int[] duration = {200,200,200,200};
     private Input entrada;
-    float characterPositionX = 1167,  characterPositionY = 376;
+    float characterPositionX = -49,  characterPositionY = 376;
     BasicGameState prevState = Principal.prevState;
+    private Principal principal;
+
 
     @Override
     public int getID() {
-       return 38;
+       return 46;
     }
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-       this.hall = new Image("res/hall.jpg");
+       this.pasillo = new Image("res/pasillosinpuertasluz.jpg");
+       
+       principal = new Principal();
+       
        Principal.prevState = this;
        Image[] walkRight = {new Image("res/B.ANIM_1.png"),new Image("res/B.ANIM_2.png"),new Image("res/B.ANIM_3.png"),new Image("res/B.ANIM_4.png")}; 
        Image[] walkLeft = {new Image("res/B.ANIM_1_OPUESTO.png"),new Image("res/B.ANIM_2_OPUESTO.png"),new Image("res/B.ANIM_3_OPUESTO.png"),new Image("res/B.ANIM_4_OPUESTO.png")};
@@ -39,12 +45,13 @@ public class Hall2 extends BasicGameState{
        nomoveleft = new Animation(nowalkleft,duration,true);
        
        character = nomoveright;
+
     }
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         
-        this.hall.drawCentered(683,384);
+        this.pasillo.drawCentered(683,384);//fondo.drawCentered(683,384);//683 y 384
         this.character.draw(characterPositionX,characterPositionY);
         
         g.drawString("CharacterX: " +characterPositionX+" CharacterY:"+characterPositionY, 683, 384);
@@ -56,33 +63,35 @@ public class Hall2 extends BasicGameState{
         
         entrada = gc.getInput();
         
+        if (characterPositionX > 1195){
+                Principal.prevState = this;
+                //sbg.enterState(38);
+            }
+        
+        if ((characterPositionX < -46)){
+                Principal.prevState = this;
+                sbg.enterState(35);
+                characterPositionX = -41;
+            }
+        
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& sideright){ 
             character = nomoveright;
             }
         
-        if (characterPositionX < -32){
-            sbg.enterState(40);
-        }
-        
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& !sideright){
                 character = nomoveleft;
             }
-        if (characterPositionX > 1197){
-            sbg.enterState(35);
-            characterPositionX = 1167;
-            }
+        
         if(entrada.isKeyDown(Input.KEY_D)){
             sideright = true;
             character = moveRight;
-            characterPositionX += i * .1f;
-            
+            characterPositionX += i * .10f;
         }
         
         if(entrada.isKeyDown(Input.KEY_A)){
             sideright = false;
             character = moveLeft;
-            characterPositionX -= i * .1f;
-            
+            characterPositionX -= i * .10f;
         }
         
         if(entrada.isKeyDown(Input.KEY_ESCAPE)){
@@ -93,4 +102,3 @@ public class Hall2 extends BasicGameState{
 }
         
     }
-
