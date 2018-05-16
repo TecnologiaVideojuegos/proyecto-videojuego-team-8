@@ -80,8 +80,6 @@ public class Pasillo2 extends BasicGameState{
                 characterPositionX = -37;
             }
         
-       
-        
         if ((characterPositionX > 154 && characterPositionX < 256) && 
            (entrada.isKeyDown(Input.KEY_J))){
                 Principal.prevState = this;
@@ -91,13 +89,13 @@ public class Pasillo2 extends BasicGameState{
         if ((characterPositionX > 575 && characterPositionX < 680) && 
            (entrada.isKeyDown(Input.KEY_J))){
                 Principal.prevState = this;
-               sbg.enterState(34);
+               sbg.enterState(37);
             }
 
         if ((characterPositionX > 983 && characterPositionX < 1091) && 
            (entrada.isKeyDown(Input.KEY_J))){
                 Principal.prevState = this;
-                sbg.enterState(37);
+                sbg.enterState(34);
             }
 
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& sideright){ 

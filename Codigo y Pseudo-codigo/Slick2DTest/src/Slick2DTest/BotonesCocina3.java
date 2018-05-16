@@ -44,13 +44,13 @@ public class BotonesCocina3 extends BasicGameState{
         System.out.println("X:"+posX+" Y:"+posY);
         
         //blue button
-        if ((posX > 272 && posX < 468) && (posY > 269 && posY < 465)){
+        if ((posX > 773 && posX < 968) && (posY > 269 && posY < 465)){
             if(Mouse.isButtonDown(0)){
                 sbg.enterState(44);
             }
         }
         
-        else if ((posX > 1016 && posX < 1211) && (posY > 269 && posY < 465)) {
+        else if ((posX > 531 && posX < 726) && (posY > 269 && posY < 465)) {
             if(Mouse.isButtonDown(0)){
                 sbg.enterState (40);
             }

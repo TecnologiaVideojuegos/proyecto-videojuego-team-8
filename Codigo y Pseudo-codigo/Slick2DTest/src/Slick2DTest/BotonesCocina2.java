@@ -24,7 +24,7 @@ public class BotonesCocina2 extends BasicGameState{
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-       this.cocinabotones = new Image("res/cocina2bgRAN.jpg");
+       this.cocinabotones = new Image("res/cocina2bgR.jpg");
        Principal.prevState = this;
     }
 
@@ -43,14 +43,13 @@ public class BotonesCocina2 extends BasicGameState{
         
         System.out.println("X:"+posX+" Y:"+posY);
         
-        //orange button
-        if ((posX > 773 && posX < 968) && (posY > 269 && posY < 465)){
+        if ((posX > 272 && posX < 468) && (posY > 269 && posY < 465)){
             if(Mouse.isButtonDown(0)){
                 sbg.enterState(43);
             }
         }
         
-        else if ((posX > 272 && posX < 468) && (posY > 269 && posY < 465) || ((posX > 1016 && posX < 1211) && (posY > 269 && posY < 465))) {
+        else if ((posX > 773 && posX < 968) && (posY > 269 && posY < 465) || ((posX > 531 && posX < 726) && (posY > 269 && posY < 465))) {
             if(Mouse.isButtonDown(0)){
                 sbg.enterState (40);
             }
