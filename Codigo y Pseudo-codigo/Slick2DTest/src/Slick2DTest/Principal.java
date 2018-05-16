@@ -11,6 +11,8 @@ public class Principal extends StateBasedGame{
     public static boolean llave = false;
     public static boolean tuberia = false;
     public static boolean de32a8 = false;
+    public static boolean viejo = false;
+    public static boolean nina  = false;     
     public static BasicGameState prevState  = null;
     public static BasicGameState prevState2  = null;
     public static int puntuacionMinijuegoLlave = 0;
@@ -100,7 +102,12 @@ public class Principal extends StateBasedGame{
        this.addState(new Video_inicial());
        this.addState(new PasilloSecreto());
        this.addState(new HabitacionAgujero());
-       
+       this.addState(new Pasillo2());
+       this.addState(new Habitacion2_1());
+       this.addState(new Habitacion2_3());
+       this.addState(new Hall2());
+       this.addState(new Pasillo3());
+      
     }    
 
 }

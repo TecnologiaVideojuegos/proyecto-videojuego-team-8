@@ -83,9 +83,10 @@ public class HabitacionAgujero extends BasicGameState {
             sideright = false;
             character = moveLeft;
             characterPositionX -= i * .1f;
-            /*if (characterPositionX < 233){
-                sbg.enterState(2);
-            }*/
+            if (characterPositionX < 233){
+                sbg.enterState(35);
+                sideright = true;
+            }
         }
         
         if(entrada.isKeyDown(Input.KEY_ESCAPE)){

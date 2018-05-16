@@ -9,26 +9,24 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class Habitacion3 extends BasicGameState {
-
+public class Hall2 extends BasicGameState{
+    
     Animation character, moveLeft, moveRight,nomoveright,nomoveleft;
+    private Image hall;
     boolean sideright=true;
-    private Image habitacion;
     int[] duration = {200,200,200,200};
     private Input entrada;
-    float characterPositionX = 250,  characterPositionY = 376;
+    float characterPositionX = 1167,  characterPositionY = 376;
     BasicGameState prevState = Principal.prevState;
-    
-    
+
     @Override
     public int getID() {
-        return 6;
+       return 38;
     }
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-       this.habitacion = new Image("res/habitacion1grieta.jpg");
-       
+       this.hall = new Image("res/hall.jpg");
        Principal.prevState = this;
        Image[] walkRight = {new Image("res/B.ANIM_1.png"),new Image("res/B.ANIM_2.png"),new Image("res/B.ANIM_3.png"),new Image("res/B.ANIM_4.png")}; 
        Image[] walkLeft = {new Image("res/B.ANIM_1_OPUESTO.png"),new Image("res/B.ANIM_2_OPUESTO.png"),new Image("res/B.ANIM_3_OPUESTO.png"),new Image("res/B.ANIM_4_OPUESTO.png")};
@@ -45,59 +43,54 @@ public class Habitacion3 extends BasicGameState {
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        this.habitacion.drawCentered(683,384);
+        
+        this.hall.drawCentered(683,384);
         this.character.draw(characterPositionX,characterPositionY);
         
         g.drawString("CharacterX: " +characterPositionX+" CharacterY:"+characterPositionY, 683, 384);
+        
     }
 
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
-         entrada = gc.getInput();
         
-        //Building 1 entrance
-        if (characterPositionX < 234){
-           {
-                sbg.enterState(2);
-                sideright = true;
-                characterPositionX = 250;
-                
-            }
-        }
-        
-        if (characterPositionX >= 567 && characterPositionX <= 629 && Principal.tuberia && entrada.isKeyDown(Input.KEY_J)){
-            sbg.enterState(33);
-        }
+        entrada = gc.getInput();
         
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& sideright){ 
             character = nomoveright;
             }
         
+        if (characterPositionX < -32){
+            //sbg.enterState(2);
+        }
+        
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& !sideright){
                 character = nomoveleft;
             }
-        
-        
-        
+        if (characterPositionX > 1197){
+            sbg.enterState(35);
+            characterPositionX = 1167;
+            }
         if(entrada.isKeyDown(Input.KEY_D)){
             sideright = true;
             character = moveRight;
             characterPositionX += i * .1f;
-            if (characterPositionX > 939){
-                    characterPositionX -= i *.10f;
-            }
+            
         }
         
         if(entrada.isKeyDown(Input.KEY_A)){
             sideright = false;
             character = moveLeft;
             characterPositionX -= i * .1f;
+            
         }
         
         if(entrada.isKeyDown(Input.KEY_ESCAPE)){
             Principal.prevState = this;
             sbg.enterState(3);
         }
-    }
-    
+               
 }
+        
+    }
+

@@ -68,7 +68,7 @@ public class Pasillo extends BasicGameState{
                 sbg.enterState(8);
             }
         
-        if ((characterPositionX < -67)){
+        if ((characterPositionX < -32)){
                 Principal.prevState = this;
                 sbg.enterState(1);
             }
@@ -88,7 +88,7 @@ public class Pasillo extends BasicGameState{
             }
         
         if ((characterPositionX > 575 && characterPositionX < 680) && 
-           (entrada.isKeyDown(Input.KEY_J))&&(!principal.isLlave())){
+           (entrada.isKeyDown(Input.KEY_J))&&(!principal.isLlave())&& Principal.nina){
                 Principal.prevState = this;
                 System.out.println(principal.isLlave());
                 sbg.enterState(9);

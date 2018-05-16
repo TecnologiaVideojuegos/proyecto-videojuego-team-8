@@ -61,10 +61,11 @@ public class Habitacion2 extends BasicGameState {
          entrada = gc.getInput();
         
         //Building 1 entrance
-        if (characterPositionX < 211){
+        if (characterPositionX < 234){
            {
                 sbg.enterState(2);
                 characterPositionX = 250;
+                sideright = true;
             }
         }
         
