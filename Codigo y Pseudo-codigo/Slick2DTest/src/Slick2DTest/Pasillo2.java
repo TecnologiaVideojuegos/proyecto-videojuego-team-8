@@ -17,7 +17,7 @@ public class Pasillo2 extends BasicGameState{
     private Image pasillo;
     int[] duration = {200,200,200,200};
     private Input entrada;
-    float characterPositionX = 638,  characterPositionY = 376;
+    float characterPositionX = 1036,  characterPositionY = 376;
     BasicGameState prevState = Principal.prevState;
     private Principal principal;
 
@@ -77,7 +77,7 @@ public class Pasillo2 extends BasicGameState{
         if ((characterPositionX < -33)){
                 Principal.prevState = this;
                 sbg.enterState(38);
-                characterPositionX = -37;
+                
             }
         
         if ((characterPositionX > 154 && characterPositionX < 256) && 
