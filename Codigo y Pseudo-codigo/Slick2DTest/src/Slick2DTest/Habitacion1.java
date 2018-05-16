@@ -36,10 +36,7 @@ public class Habitacion1 extends BasicGameState {
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
        this.habitacion = new Image("res/habitacion1-fantasma.jpg");
-       this.habitacion1 = new Image ("res/habitacion1-1.jpg");
-       this.habitacion2 = new Image ("res/habitacion1-2.jpg");
-       this.habitacion3 = new Image ("res/habitacion1-3.jpg");
-      
+
        Principal.prevState = this;
        Image[] walkRight = {new Image("res/B.ANIM_1.png"),new Image("res/B.ANIM_2.png"),new Image("res/B.ANIM_3.png"),new Image("res/B.ANIM_4.png")}; 
        Image[] walkLeft = {new Image("res/B.ANIM_1_OPUESTO.png"),new Image("res/B.ANIM_2_OPUESTO.png"),new Image("res/B.ANIM_3_OPUESTO.png"),new Image("res/B.ANIM_4_OPUESTO.png")};
@@ -51,7 +48,7 @@ public class Habitacion1 extends BasicGameState {
        nomoveright = new Animation(nowalkright,duration,true);
        nomoveleft = new Animation(nowalkleft,duration,true);
        
-       character = nomoveright;
+       character = nomoveleft;
     }
 
     @Override
@@ -66,10 +63,12 @@ public class Habitacion1 extends BasicGameState {
          entrada = gc.getInput();
         
         //Building 1 entrance
-        if (characterPositionX < 211){
+        if (characterPositionX < 234){
            {
                 sbg.enterState(2);
+                sideright = true;
                 characterPositionX = 250;
+                
             }
         }
         
@@ -83,7 +82,8 @@ public class Habitacion1 extends BasicGameState {
         
         
         
-            if(characterPositionX >655){
+        if(characterPositionX >655 && !Principal.nina){
+            Principal.nina = true;    
             sbg.enterState(12);
             characterPositionX = 250;
         }

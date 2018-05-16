@@ -85,7 +85,7 @@ public class Recepcion extends BasicGameState{
             sideright = false;
             character = moveLeft;
             characterPositionX -= i * .10f;
-            if (characterPositionX < 24){
+            if (characterPositionX < 32){
                     characterPositionX += i *.1f;
             }
         }

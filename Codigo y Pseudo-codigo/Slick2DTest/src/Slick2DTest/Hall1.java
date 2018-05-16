@@ -58,9 +58,10 @@ public class Hall1 extends BasicGameState{
         
         
                        
-        if (characterPositionX >760){
-                    sbg.enterState(22);
-                    characterPositionX = 700;
+        if (characterPositionX >760 && !Principal.viejo){
+            Principal.viejo = true;
+            sbg.enterState(22);
+            characterPositionX = 700;
             }
         
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& sideright){ 
@@ -117,4 +118,4 @@ public class Hall1 extends BasicGameState{
                
 }
         
-    }
+}
