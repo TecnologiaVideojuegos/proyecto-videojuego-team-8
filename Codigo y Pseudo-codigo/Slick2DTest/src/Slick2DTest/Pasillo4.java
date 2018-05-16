@@ -65,7 +65,7 @@ public class Pasillo4 extends BasicGameState{
         
         if (characterPositionX > 1195){
                 Principal.prevState = this;
-                //sbg.enterState(38);
+                sbg.enterState(48);
             }
         
         if ((characterPositionX < -46)){

@@ -114,7 +114,8 @@ public class Principal extends StateBasedGame{
        this.addState(new BotonesCocina3());
        this.addState(new BotonesCocina4());
        this.addState(new BotonesCocina5());
-       this.addState(new Pasillo4());
+       this.addState(new HabitacionAgujero3());
+       
     }    
 
 }

@@ -69,7 +69,7 @@ public class Hall2 extends BasicGameState{
             }
         if (characterPositionX > 1197){
             sbg.enterState(35);
-            characterPositionX = 1167;
+            
             }
         if(entrada.isKeyDown(Input.KEY_D)){
             sideright = true;

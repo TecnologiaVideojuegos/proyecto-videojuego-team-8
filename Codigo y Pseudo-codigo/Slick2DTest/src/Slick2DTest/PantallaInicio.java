@@ -50,7 +50,7 @@ public class PantallaInicio extends BasicGameState{
         //play button
         if ((posX > 523 && posX < 870) && (posY > 348 && posY < 400)){
             if(Mouse.isButtonDown(0)){
-                sbg.enterState(40);
+                sbg.enterState(7);
             }
         }
         //exit button

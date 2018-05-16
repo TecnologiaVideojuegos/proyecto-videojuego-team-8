@@ -9,7 +9,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class Habitacion3 extends BasicGameState {
+public class HabitacionAgujero3 extends BasicGameState {
 
     Animation character, moveLeft, moveRight,nomoveright,nomoveleft;
     boolean sideright=true;
@@ -22,12 +22,12 @@ public class Habitacion3 extends BasicGameState {
     
     @Override
     public int getID() {
-        return 6;
+        return 47;
     }
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-       this.habitacion = new Image("res/habitacion1grieta.jpg");
+       this.habitacion = new Image("res/habitacion1agujero.jpg");
        
        Principal.prevState = this;
        Image[] walkRight = {new Image("res/B.ANIM_1.png"),new Image("res/B.ANIM_2.png"),new Image("res/B.ANIM_3.png"),new Image("res/B.ANIM_4.png")}; 
@@ -66,18 +66,16 @@ public class Habitacion3 extends BasicGameState {
         }
         
         if (characterPositionX >= 567 && characterPositionX <= 629 && Principal.tuberia && entrada.isKeyDown(Input.KEY_J)){
-            sbg.enterState(47);
+            sbg.enterState(33);
         }
         
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& sideright){ 
             character = nomoveright;
-            }
+        }
         
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& !sideright){
                 character = nomoveleft;
-            }
-        
-        
+        }
         
         if(entrada.isKeyDown(Input.KEY_D)){
             sideright = true;
