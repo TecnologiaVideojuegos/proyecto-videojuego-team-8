@@ -140,6 +140,7 @@ public class Principal extends StateBasedGame{
        this.addState(new HabitacionFinal());
        this.addState(new Controls());
        this.addState(new Anillo());
+       this.addState(new Creditos());
        this.addState(new PreMinijuegoLlave());
        this.addState(new PreMinijuegoCuchillo());
     }    

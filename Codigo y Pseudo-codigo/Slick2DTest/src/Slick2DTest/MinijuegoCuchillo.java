@@ -135,7 +135,7 @@ public class MinijuegoCuchillo extends BasicGameState{
         habitacion.drawCentered(683,384);
         g.drawString(" "+posicionX +" "+posicionY,100,100);
         g.drawString("Estado 1", 10, 50);
-        g.setColor(Color.yellow);
+        g.setColor(Color.transparent);
         g.fill(boxpersonaje);
         this.character.draw(posicionX,posicionY);
         

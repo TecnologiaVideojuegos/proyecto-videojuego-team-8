@@ -13,6 +13,7 @@ public class Creditos extends BasicGameState {
     float posX, posY;
     Input entrada;
     Image credits;
+    private int timePassed; 
     
     @Override
     public int getID() {
@@ -21,23 +22,26 @@ public class Creditos extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        credits = new Image ("res/creditos.png");
+        credits = new Image ("res/creditos.jpg");
     }
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics grphcs) throws SlickException {
-        this.credits.draw();
+        this.credits.draw(posX,posY);
     }
 
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
       entrada = gc.getInput();
       
+      timePassed += i;
+        if (timePassed > 15000) {
+            System.exit(0);
+        }
+            
       if(Principal.creditos){
-          posY -= i* .05f;
-          if(posY < 1336){
-              posY += i;
-          }
+          posY-= i/10f;
+ 
       }
     }
     
