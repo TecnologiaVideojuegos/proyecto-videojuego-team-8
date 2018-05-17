@@ -8,37 +8,34 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Principal extends StateBasedGame{
     MinijuegoLlave minijuego = new MinijuegoLlave();
+    MinijuegoCuchillo minijuego2 = new MinijuegoCuchillo();
     public static boolean llave = false;
     public static boolean tuberia = false;
     public static boolean de32a8 = false;
     public static boolean viejo = false;
     public static boolean nina  = false; 
     public static boolean chino  = false; 
-    public static boolean botones  = false; 
+    public static boolean botones  = false;
+    public static boolean cuchillo  = false;
     public static BasicGameState prevState  = null;
     public static BasicGameState prevState2  = null;
     public static int puntuacionMinijuegoLlave = 0;
     public static int vidasMinijuegoLlave = 3;
+    public static int vidasMinijuegoCuchillo = 3;
     public static float characterPositionX8; 
 
-    public static boolean isTuberia() {
-        return tuberia;
-    }
-
-    public static void setTuberia(boolean tuberia) {
-        Principal.tuberia = tuberia;
-    }
-   
-
-    
-    public boolean isLlave() {
+    public static boolean isLlave() {
         return llave;
     }
 
-    public void setLlave(boolean llave) {
-        this.llave = llave;
+    public static boolean isCuchillo() {
+        return cuchillo;
     }
-    
+
+    public static void setVidasMinijuegoCuchillo(int vidasMinijuegoCuchillo) {
+        Principal.vidasMinijuegoCuchillo = vidasMinijuegoCuchillo;
+    }
+
     public static void setPuntuacionMinijuegoLlave(int puntuacionMinijuegoLlave) {
         Principal.puntuacionMinijuegoLlave = puntuacionMinijuegoLlave;
     }
@@ -106,7 +103,7 @@ public class Principal extends StateBasedGame{
        this.addState(new HabitacionAgujero());
        this.addState(new Pasillo2());
        this.addState(new Habitacion2_1());
-       this.addState(new Habitacion2_3());
+       this.addState(new Habitacion2_2());
        this.addState(new Hall2());
        this.addState(new Pasillo3());
        this.addState(new Cocina());
@@ -132,6 +129,12 @@ public class Principal extends StateBasedGame{
        this.addState(new EscenaChinoNegro11());
        this.addState(new EscenaChinoNegro12());
        this.addState(new EscenaChinoNegro13());
+       this.addState(new Posit2_2());
+       this.addState(new Posit2_1());
+       this.addState(new MinijuegoCuchillo());
+       this.addState(new GameOverMinijuegoCuchillo(minijuego2));
+       this.addState(new GameWinMinijuegoCuchillo(minijuego2));
+       this.addState(new Habitacion3_2());
     }    
 
 }

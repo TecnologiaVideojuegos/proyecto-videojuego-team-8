@@ -27,7 +27,7 @@ public class Habitacion2_1 extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-       this.habitacionagujero = new Image("res/habitacion2.jpg");
+       this.habitacionagujero = new Image("res/habitacion2-3.jpg");
        
        Principal.prevState = this;
        Image[] walkRight = {new Image("res/B.ANIM_1.png"),new Image("res/B.ANIM_2.png"),new Image("res/B.ANIM_3.png"),new Image("res/B.ANIM_4.png")}; 
@@ -55,7 +55,9 @@ public class Habitacion2_1 extends BasicGameState {
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
          entrada = gc.getInput();
       
-        
+        if (characterPositionX> 591 && characterPositionX < 725 && entrada.isKeyDown(Input.KEY_J)){
+            sbg.enterState(64);
+        }
         
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& sideright){ 
             character = nomoveright;

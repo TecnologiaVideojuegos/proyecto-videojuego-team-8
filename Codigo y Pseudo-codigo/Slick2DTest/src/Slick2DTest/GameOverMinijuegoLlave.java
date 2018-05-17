@@ -14,7 +14,7 @@ public class GameOverMinijuegoLlave extends BasicGameState{
     Input entrada;
     Principal principal;
 
-    public GameOverMinijuegoLlave(MinijuegoLlave minijuego) {
+   GameOverMinijuegoLlave(MinijuegoLlave minijuego) {
         this.minijuego = minijuego;
     }
     
