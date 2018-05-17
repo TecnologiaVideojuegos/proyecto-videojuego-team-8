@@ -79,7 +79,7 @@ public class PasilloSecreto extends BasicGameState {
             character = moveLeft;
             characterPositionX -= i * .1f;
             if (characterPositionX < -32){
-                    sbg.enterState(6);
+                    sbg.enterState(47);
             }
         }
         

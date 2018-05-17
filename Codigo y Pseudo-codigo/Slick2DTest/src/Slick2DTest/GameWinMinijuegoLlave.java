@@ -21,8 +21,8 @@ public class GameWinMinijuegoLlave extends BasicGameState{
     }
     
         public void render(GameContainer arg0, StateBasedGame arg1, Graphics g){        
-        g.drawString("Has ganado", 300, 300);
-        g.drawString("Has conseguido una llave", 300, 450);
+        g.drawString("Has ganado", 600, 364);
+        g.drawString("Has conseguido una llave", 540, 404);
         
     }
     

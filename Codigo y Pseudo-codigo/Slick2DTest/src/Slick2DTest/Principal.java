@@ -18,6 +18,7 @@ public class Principal extends StateBasedGame{
     public static boolean botones  = false;
     public static boolean cuchillo  = false;
     public static boolean creditos  = false;
+    public static boolean agujero  = false;
     public static BasicGameState prevState  = null;
     public static BasicGameState prevState2  = null;
     public static int puntuacionMinijuegoLlave = 0;
@@ -139,7 +140,7 @@ public class Principal extends StateBasedGame{
        this.addState(new HabitacionFinal());
        this.addState(new Controls());
        this.addState(new Anillo());
-       //this.addState(new PreMinijuegoLlaves());
+       this.addState(new PreMinijuegoLlave());
     }    
 
 }

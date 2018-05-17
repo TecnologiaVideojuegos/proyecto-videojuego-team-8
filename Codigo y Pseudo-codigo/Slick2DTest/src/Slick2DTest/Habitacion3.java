@@ -67,6 +67,7 @@ public class Habitacion3 extends BasicGameState {
         
         if (characterPositionX >= 567 && characterPositionX <= 629 && Principal.tuberia && entrada.isKeyDown(Input.KEY_J)){
             sbg.enterState(47);
+            Principal.agujero = true;
         }
         
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& sideright){ 

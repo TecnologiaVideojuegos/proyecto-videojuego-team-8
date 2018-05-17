@@ -27,7 +27,7 @@ public class GameOverMinijuegoLlave extends BasicGameState{
     }
     
        public void render(GameContainer arg0, StateBasedGame arg1, Graphics g){        
-        g.drawString("Has Perdido", 300, 300);
+        g.drawString("Has Perdido",600, 364);
     }
     
     

@@ -91,17 +91,23 @@ public class Pasillo extends BasicGameState{
            (entrada.isKeyDown(Input.KEY_J))&&(!principal.isLlave())&& Principal.nina){
                 Principal.prevState = this;
                 System.out.println(principal.isLlave());
-                sbg.enterState(9);
+                sbg.enterState(73);
             }
         
         
         
         if ((characterPositionX > 983 && characterPositionX < 1091) && 
-           (entrada.isKeyDown(Input.KEY_J))){
+           (entrada.isKeyDown(Input.KEY_J)&& !Principal.agujero)){
                 Principal.prevState = this;
                 sbg.enterState(6);
             }
 
+        if ((characterPositionX > 983 && characterPositionX < 1091) && 
+           (entrada.isKeyDown(Input.KEY_J)&& Principal.agujero)){
+                Principal.prevState = this;
+                sbg.enterState(47);
+            }
+        
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& sideright){ 
             character = nomoveright;
             }
