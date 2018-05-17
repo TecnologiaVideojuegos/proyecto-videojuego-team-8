@@ -32,7 +32,6 @@ public class MinijuegoCuchillo extends BasicGameState{
     
     public void init(GameContainer arg0, StateBasedGame arg1)
             throws SlickException {
-        //personaje1 = new Image("respuzzles/0.png");
         habitacion = new Image("res/habitacion1bis.jpg");
         balls = new ArrayList<Circle>();
         mouseBall = new Circle(0,0,30);
@@ -147,7 +146,7 @@ public class MinijuegoCuchillo extends BasicGameState{
     
     
     public int getID() {
-        return 64;
+        return 72;
     }    
     
 }

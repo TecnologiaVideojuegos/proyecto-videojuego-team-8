@@ -60,7 +60,6 @@ public class Habitacion3_1 extends BasicGameState {
                 sbg.enterState(48);
                 sideright = true;
                 characterPositionX = 250;
-                
             }
         }
         
