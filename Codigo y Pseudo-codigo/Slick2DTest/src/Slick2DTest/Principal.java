@@ -61,7 +61,7 @@ public class Principal extends StateBasedGame{
     }
   
     public Principal() throws SlickException {
-        super("Hellsingly");
+        super("Hellingly");
        
     }
 
@@ -139,6 +139,7 @@ public class Principal extends StateBasedGame{
        this.addState(new HabitacionFinal());
        this.addState(new Controls());
        this.addState(new Anillo());
+       //this.addState(new PreMinijuegoLlaves());
     }    
 
 }

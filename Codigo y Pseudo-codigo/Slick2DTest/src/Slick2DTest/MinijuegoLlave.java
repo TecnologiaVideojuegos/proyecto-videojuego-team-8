@@ -42,7 +42,7 @@ public class MinijuegoLlave extends BasicGameState{
             boxpersonaje = new Rectangle(posX,posY,38,102);
             
             Image[] walkRight = {new Image("res/A.ANIM_1_MINIGAME.png"),new Image("res/A.ANIM_2_MINIGAME.png"),new Image("res/A.ANIM_3_MINIGAME.png"),new Image("res/A.ANIM_4_MINIGAME.png"),new Image("res/A.ANIM_5_MINIGAME.png"),new Image("res/A.ANIM_6_MINIGAME.png"),new Image("res/A.ANIM_7_MINIGAME.png")};
-            Image[] walkLeft = {new Image("res/A.ANIM_1_MINIGAME.png"),new Image("res/A.ANIM_2_MINIGAME.png"),new Image("res/A.ANIM_3_MINIGAME.png"),new Image("res/A.ANIM_4_MINIGAME.png"),new Image("res/A.ANIM_5_MINIGAME.png"),new Image("res/A.ANIM_6_MINIGAME.png"),new Image("res/A.ANIM_7_MINIGAME.png")};
+            Image[] walkLeft = {new Image("res/A.ANIM_1_MINIGAME_OPUESTA.png"),new Image("res/A.ANIM_2_MINIGAME_OPUESTA.png"),new Image("res/A.ANIM_3_MINIGAME_OPUESTA.png"),new Image("res/A.ANIM_4_MINIGAME_OPUESTA.png"),new Image("res/A.ANIM_5_MINIGAME_OPUESTA.png"),new Image("res/A.ANIM_6_MINIGAME_OPUESTA.png"),new Image("res/A.ANIM_7_MINIGAME_OPUESTA.png")};
             Image[] nowalk = {new Image("res/A.ANIM_1_MINIGAME.png"),new Image("res/A.ANIM_1_MINIGAME.png"),new Image("res/A.ANIM_1_MINIGAME.png"),new Image("res/A.ANIM_1_MINIGAME.png"),new Image("res/A.ANIM_1_MINIGAME.png"),new Image("res/A.ANIM_1_MINIGAME.png"),new Image("res/A.ANIM_1_MINIGAME.png")};
             
             moveRight = new Animation(walkRight, duration, true);
@@ -63,7 +63,7 @@ public class MinijuegoLlave extends BasicGameState{
             character = moveRight;
             posicionX += delta * .5f;
             boxpersonaje.setX(posicionX);
-            if(posicionX>1005){
+            if(posicionX>1050){
                 posicionX -= delta * .5f;
                 boxpersonaje.setX(posicionX);
             }
@@ -72,7 +72,7 @@ public class MinijuegoLlave extends BasicGameState{
             character = moveLeft;
             posicionX -= delta * .5f;
             boxpersonaje.setX(posicionX);
-            if(posicionX<250){
+            if(posicionX<280){
                 posicionX += delta * .5f;
                 boxpersonaje.setX(posicionX);
             }
@@ -82,7 +82,7 @@ public class MinijuegoLlave extends BasicGameState{
         }
         
         timePassed += delta;
-        if (timePassed > 500) {
+        if (timePassed > 800) {
             timePassed = 0;
             balls.add(new Circle(280+random.nextInt(755),84,10));
         }
@@ -98,20 +98,23 @@ public class MinijuegoLlave extends BasicGameState{
                 balls.remove(i);
                 Principal.puntuacionMinijuegoLlave++;
             }
-        }
-        if (Principal.vidasMinijuegoLlave <= 0) {
-            sbg.enterState(10);
-             for (int i = balls.size()-1; i >= 0; i--) {
-            Circle c = balls.get(i);
-            if (c.getCenterY() > 84) {
-                balls.remove(i);
-                
-            }
-        }
-         if (Principal.puntuacionMinijuegoLlave >= 20) {
+            if (Principal.puntuacionMinijuegoLlave > 19) {
             sbg.enterState(11);
         }
+        
+        if (Principal.vidasMinijuegoLlave <= 0) {
+            sbg.enterState(10);
+            for (int j = balls.size()-1; j >= 0; j--) {
+            Circle b = balls.get(j);
+            if (c.getCenterY() > 84) {
+                balls.remove(j);
+            }
         }
+         
+        }
+        }
+        
+        
     }
     
     @Override
@@ -119,7 +122,7 @@ public class MinijuegoLlave extends BasicGameState{
         this.habitacion.drawCentered(683,384);
         g.drawString(" "+posicionX +" "+posicionY,100,100);
         g.drawString("Estado 1", 10, 50);
-        g.setColor(Color.yellow);
+        g.setColor(Color.transparent);
         g.fill(boxpersonaje);
         this.character.draw(posicionX,posicionY);
         
