@@ -84,7 +84,7 @@ public class PasilloFinal extends BasicGameState{
         if ((characterPositionX > 575 && characterPositionX < 680) && 
            (entrada.isKeyDown(Input.KEY_J))&&(!principal.isCuchillo())&&(Principal.chino)){
                 Principal.prevState = this;
-                sbg.enterState(72);
+                sbg.enterState(74);
             }
         
         if ((characterPositionX > 575 && characterPositionX < 680) && 

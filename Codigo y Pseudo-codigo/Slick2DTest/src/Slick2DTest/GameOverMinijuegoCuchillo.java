@@ -29,13 +29,13 @@ public class GameOverMinijuegoCuchillo extends BasicGameState{
     }
     
        public void render(GameContainer arg0, StateBasedGame arg1, Graphics g){        
-        g.drawString("Has Perdido", 300, 300);
+        g.drawString("Has Perdido", 600, 364);
     }
     
     
     public void update(GameContainer gc, StateBasedGame sbg, int arg2){
         entrada = gc.getInput();
-        principal.setVidasMinijuegoCuchillo(3);
+        principal.setVidasMinijuegoCuchillo(1);
               if (entrada.isKeyDown(Input.KEY_SPACE)){
                 sbg.enterState (48);
            }

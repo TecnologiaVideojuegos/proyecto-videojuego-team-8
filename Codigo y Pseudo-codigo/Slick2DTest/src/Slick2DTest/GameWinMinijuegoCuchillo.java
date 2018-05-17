@@ -22,8 +22,7 @@ public class GameWinMinijuegoCuchillo extends BasicGameState{
     }
     
         public void render(GameContainer arg0, StateBasedGame arg1, Graphics g){        
-        g.drawString("Has ganado", 300, 300);
-        g.drawString("Has conseguido un cuchillo", 300, 450);
+        g.drawString("Has conseguido escapar de la habitación", 500, 384);
         
     }
     

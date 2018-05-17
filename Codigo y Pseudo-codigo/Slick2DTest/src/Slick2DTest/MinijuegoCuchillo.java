@@ -25,14 +25,14 @@ public class MinijuegoCuchillo extends BasicGameState{
     private Random random;
     private Image personaje;
     private Input entrada;
-    private float posicionX=1005, posicionY=560;
-    private int posX=1005,posY= 560;
+    private float posicionX=1005, posicionY=140;
+    private int posX=1005,posY= 140;
     int[] duration = {200,200,200,200,200,200,200};
     
     
     public void init(GameContainer arg0, StateBasedGame arg1)
             throws SlickException {
-        habitacion = new Image("res/habitacion1bis.jpg");
+        habitacion = new Image("res/habitacion3minijuego.jpg");
         balls = new ArrayList<Circle>();
         mouseBall = new Circle(0,0,30);
         timePassed = 0;
@@ -40,10 +40,10 @@ public class MinijuegoCuchillo extends BasicGameState{
         personaje = new Image("res/A.ANIM_1_MINIGAME.png");
         boxpersonaje = new Rectangle(posX,posY,38,102);
        
-        Image[] walkRight = {new Image("res/A.ANIM_1_MINIGAME.png"),new Image("res/A.ANIM_2_MINIGAME.png"),new Image("res/A.ANIM_3_MINIGAME.png"),new Image("res/A.ANIM_4_MINIGAME.png"),new Image("res/A.ANIM_5_MINIGAME.png"),new Image("res/A.ANIM_6_MINIGAME.png"),new Image("res/A.ANIM_7_MINIGAME.png")}; 
-        Image[] walkLeft = {new Image("res/A.ANIM_1_MINIGAME.png"),new Image("res/A.ANIM_2_MINIGAME.png"),new Image("res/A.ANIM_3_MINIGAME.png"),new Image("res/A.ANIM_4_MINIGAME.png"),new Image("res/A.ANIM_5_MINIGAME.png"),new Image("res/A.ANIM_6_MINIGAME.png"),new Image("res/A.ANIM_7_MINIGAME.png")}; 
-        Image[] nowalk = {new Image("res/A.ANIM_1_MINIGAME.png"),new Image("res/A.ANIM_1_MINIGAME.png"),new Image("res/A.ANIM_1_MINIGAME.png"),new Image("res/A.ANIM_1_MINIGAME.png"),new Image("res/A.ANIM_1_MINIGAME.png"),new Image("res/A.ANIM_1_MINIGAME.png"),new Image("res/A.ANIM_1_MINIGAME.png")}; 
-    
+        Image[] walkRight = {new Image("res/A.ANIM_1_MINIGAME.png"),new Image("res/A.ANIM_2_MINIGAME.png"),new Image("res/A.ANIM_3_MINIGAME.png"),new Image("res/A.ANIM_4_MINIGAME.png"),new Image("res/A.ANIM_5_MINIGAME.png"),new Image("res/A.ANIM_6_MINIGAME.png"),new Image("res/A.ANIM_7_MINIGAME.png")};
+        Image[] walkLeft = {new Image("res/A.ANIM_1_MINIGAME_OPUESTA.png"),new Image("res/A.ANIM_2_MINIGAME_OPUESTA.png"),new Image("res/A.ANIM_3_MINIGAME_OPUESTA.png"),new Image("res/A.ANIM_4_MINIGAME_OPUESTA.png"),new Image("res/A.ANIM_5_MINIGAME_OPUESTA.png"),new Image("res/A.ANIM_6_MINIGAME_OPUESTA.png"),new Image("res/A.ANIM_7_MINIGAME_OPUESTA.png")};
+        Image[] nowalk = {new Image("res/A.ANIM_1_MINIGAME.png"),new Image("res/A.ANIM_1_MINIGAME.png"),new Image("res/A.ANIM_1_MINIGAME.png"),new Image("res/A.ANIM_1_MINIGAME.png"),new Image("res/A.ANIM_1_MINIGAME.png"),new Image("res/A.ANIM_1_MINIGAME.png"),new Image("res/A.ANIM_1_MINIGAME.png")};
+       
         moveRight = new Animation(walkRight, duration, true);
         moveLeft = new Animation(walkLeft,duration,true);
         nomove = new Animation(nowalk,duration,true);
@@ -107,7 +107,7 @@ public class MinijuegoCuchillo extends BasicGameState{
         }
         for (int i = balls.size()-1; i >= 0; i--) {
             Circle c = balls.get(i);
-            if (c.getCenterX() > 1010) {
+            if (c.getCenterX() > 1040) {
                 balls.remove(i);
             }else if (c.intersects(boxpersonaje)) {
                 balls.remove(i);
@@ -119,10 +119,12 @@ public class MinijuegoCuchillo extends BasicGameState{
             sbg.enterState(66);
         }
         
-        if (Principal.vidasMinijuegoCuchillo <= 0) {
+        if (Principal.vidasMinijuegoCuchillo == 0) {
             sbg.enterState(65);
             posicionX = 1005;
-            posicionY = 560;
+            posicionY = 140;
+            boxpersonaje.setX(posicionX);
+            boxpersonaje.setY(140);
         }
         
         
@@ -133,7 +135,7 @@ public class MinijuegoCuchillo extends BasicGameState{
         habitacion.drawCentered(683,384);
         g.drawString(" "+posicionX +" "+posicionY,100,100);
         g.drawString("Estado 1", 10, 50);
-        g.setColor(Color.transparent);
+        g.setColor(Color.yellow);
         g.fill(boxpersonaje);
         this.character.draw(posicionX,posicionY);
         

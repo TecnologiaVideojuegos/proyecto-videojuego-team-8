@@ -23,7 +23,7 @@ public class Principal extends StateBasedGame{
     public static BasicGameState prevState2  = null;
     public static int puntuacionMinijuegoLlave = 0;
     public static int vidasMinijuegoLlave = 3;
-    public static int vidasMinijuegoCuchillo = 3;
+    public static int vidasMinijuegoCuchillo = 1;
     public static float characterPositionX8; 
 
     public static boolean isLlave() {
@@ -141,6 +141,7 @@ public class Principal extends StateBasedGame{
        this.addState(new Controls());
        this.addState(new Anillo());
        this.addState(new PreMinijuegoLlave());
+       this.addState(new PreMinijuegoCuchillo());
     }    
 
 }
