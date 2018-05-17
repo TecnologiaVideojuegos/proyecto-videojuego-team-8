@@ -97,8 +97,11 @@ public class Recepcion extends BasicGameState{
         if(entrada.isKeyDown(Input.KEY_A)){
             sideright = false;
             character = moveLeft;
-            pasos.play();
             characterPositionX -= i * .10f;
+            if (!playpasos){
+                pasos.play();
+                playpasos = true;
+            }
             if (characterPositionX < 32){
                     characterPositionX += i *.1f;
             }

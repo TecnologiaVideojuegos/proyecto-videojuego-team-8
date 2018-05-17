@@ -5,6 +5,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -18,7 +19,9 @@ public class PasilloSecreto extends BasicGameState {
     private Input entrada;
     float characterPositionX = 24,  characterPositionY = 376;
     BasicGameState prevState = Principal.prevState;
-
+    Music pasos;
+    boolean playpasos = false;
+    
     @Override
     public int getID() {
        return 33;
@@ -58,16 +61,24 @@ public class PasilloSecreto extends BasicGameState {
 
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& sideright){ 
             character = nomoveright;
+            pasos.stop();
+            playpasos = false;
             }
         
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& !sideright){
                 character = nomoveleft;
+                pasos.stop();
+                playpasos = false;
             }
         
         if(entrada.isKeyDown(Input.KEY_D)){
             sideright = true;
             character = moveRight;
             characterPositionX += i * .1f;
+            if (!playpasos){
+                pasos.play();
+                playpasos = true;
+            }
             if (characterPositionX >1199){
                 sbg.enterState(34);
                 sideright = false;
@@ -78,6 +89,10 @@ public class PasilloSecreto extends BasicGameState {
             sideright = false;
             character = moveLeft;
             characterPositionX -= i * .1f;
+             if (!playpasos){
+                pasos.play();
+                playpasos = true;
+            }
             if (characterPositionX < -32){
                     sbg.enterState(47);
             }
