@@ -5,6 +5,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -20,7 +21,7 @@ public class Pasillo extends BasicGameState{
     float characterPositionX = 24,  characterPositionY = 376;
     BasicGameState prevState = Principal.prevState;
     private Principal principal;
-
+    Music puerta;
 
     @Override
     public int getID() {
@@ -30,7 +31,7 @@ public class Pasillo extends BasicGameState{
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
        this.pasillo = new Image("res/pasillo.jpg");
-       
+       this.puerta = new Music("res/Puerta.ogg");
        principal = new Principal();
        
        Principal.prevState = this;

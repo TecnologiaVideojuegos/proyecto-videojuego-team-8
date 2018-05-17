@@ -8,6 +8,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Circle;
 import org.newdawn.slick.geom.Rectangle;
@@ -28,10 +29,13 @@ public class MinijuegoCuchillo extends BasicGameState{
     private float posicionX=1005, posicionY=140;
     private int posX=1005,posY= 140;
     int[] duration = {200,200,200,200,200,200,200};
+    Music minijuegomusica;
+    boolean playmusic;
     
     
     public void init(GameContainer arg0, StateBasedGame arg1)
             throws SlickException {
+        this.minijuegomusica= new Music("res/Cancion_minigame2.ogg");
         habitacion = new Image("res/habitacion3minijuego.jpg");
         balls = new ArrayList<Circle>();
         mouseBall = new Circle(0,0,30);
@@ -55,6 +59,11 @@ public class MinijuegoCuchillo extends BasicGameState{
         
         System.out.println("X: "+posX+ "Y: "+ posY);
         entrada = container.getInput();
+        
+        if(!playmusic){
+            minijuegomusica.play();
+            playmusic = true;
+        }
         
         if (entrada.isKeyDown(Input.KEY_D)) {
             character = moveRight;
@@ -117,10 +126,14 @@ public class MinijuegoCuchillo extends BasicGameState{
         //Aqui serÃ­a la condicion para cambiar de stage
         if(posicionX<300 && posicionY>555){
             sbg.enterState(66);
+            minijuegomusica.stop();
+            playmusic = false;
         }
         
         if (Principal.vidasMinijuegoCuchillo == 0) {
             sbg.enterState(65);
+            minijuegomusica.stop();
+            playmusic = false;
             posicionX = 1005;
             posicionY = 140;
             boxpersonaje.setX(posicionX);

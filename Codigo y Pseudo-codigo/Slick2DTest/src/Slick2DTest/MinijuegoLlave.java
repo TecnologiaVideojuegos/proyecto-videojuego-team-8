@@ -10,6 +10,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Circle;
 import org.newdawn.slick.geom.Rectangle;
@@ -31,9 +32,12 @@ public class MinijuegoLlave extends BasicGameState{
     private float posicionX=1005, posicionY=560;
     private int posX=1005,posY= 560;
     int[] duration = {200,200,200,200,200,200,200};
+    Music musicaminijuego;
+    boolean playmusica;
         
     public void init(GameContainer arg0, StateBasedGame arg1) {
         try {
+            musicaminijuego = new Music("res/Cancion_minigame1.ogg");
             habitacion = new Image("res/habitacion1bis.jpg");
             balls = new ArrayList<Circle>();
             mouseBall = new Circle(0,0,30);
@@ -58,6 +62,11 @@ public class MinijuegoLlave extends BasicGameState{
         
         System.out.println("X: "+posX+ "Y: "+ posY);
         entrada = container.getInput();
+        
+        if(!playmusica){
+            musicaminijuego.play();
+            playmusica = true;
+        }
         
         if (entrada.isKeyDown(Input.KEY_D)) {
             character = moveRight;
@@ -100,10 +109,14 @@ public class MinijuegoLlave extends BasicGameState{
             }
             if (Principal.puntuacionMinijuegoLlave > 19) {
             sbg.enterState(11);
+            playmusica = false;
+            musicaminijuego.stop();
         }
         
         if (Principal.vidasMinijuegoLlave <= 0) {
             sbg.enterState(10);
+            playmusica = false;
+            musicaminijuego.stop();
             for (int j = balls.size()-1; j >= 0; j--) {
             Circle b = balls.get(j);
             if (c.getCenterY() > 84) {

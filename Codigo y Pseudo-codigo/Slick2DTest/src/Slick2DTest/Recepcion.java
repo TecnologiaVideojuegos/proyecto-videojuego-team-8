@@ -65,6 +65,7 @@ public class Recepcion extends BasicGameState{
         if ((characterPositionX > 1127)){
                 Principal.prevState = this;
                 sbg.enterState(2);
+                pasos.stop();
             }
         
        
