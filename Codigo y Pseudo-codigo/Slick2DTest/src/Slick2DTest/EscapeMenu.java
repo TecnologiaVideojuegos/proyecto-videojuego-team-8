@@ -28,9 +28,11 @@ public class EscapeMenu extends BasicGameState {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         
         g.setColor(Color.white);
-        g.drawString("Resume (R)", 683, 334);//fondo.drawCentered(683,384);//683 y 384
-        g.drawString("Main Menu (M)", 683, 384);
-        g.drawString("Quit (Q)", 683, 434);
+        g.drawString("Resume (R)", 683, 334);
+        g.drawString("Controls(C)", 683, 384);
+        g.drawString("Main Menu (M)", 683, 434);
+        g.drawString("Quit (Q)", 683, 484);
+        
         
         
         
@@ -50,6 +52,9 @@ public class EscapeMenu extends BasicGameState {
            
            if (entrada.isKeyDown(Input.KEY_M)){
                sbg.enterState(0);
+           }
+           if (entrada.isKeyDown(Input.KEY_C)){
+               sbg.enterState(70);
            }
            if (entrada.isKeyDown(Input.KEY_Q)){
                System.exit(0);
