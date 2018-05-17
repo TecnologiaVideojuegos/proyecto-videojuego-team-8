@@ -25,8 +25,8 @@ public class MinijuegoCuchillo extends BasicGameState{
     private Random random;
     private Image personaje;
     private Input entrada;
-    private float posicionX=1060, posicionY=560;
-    private int posX=1060,posY= 560;
+    private float posicionX=1005, posicionY=560;
+    private int posX=1005,posY= 560;
     int[] duration = {200,200,200,200,200,200,200};
     
     
@@ -61,7 +61,7 @@ public class MinijuegoCuchillo extends BasicGameState{
             character = moveRight;
             posicionX += delta * .5f;
             boxpersonaje.setX(posicionX);
-            if (posicionX>1038){
+            if (posicionX>1005){
                 posicionX -= delta * .5f;
                 boxpersonaje.setX(posicionX);
             }
@@ -70,7 +70,7 @@ public class MinijuegoCuchillo extends BasicGameState{
             character = moveLeft;
             posicionX -= delta * .5f;
             boxpersonaje.setX(posicionX);
-            if (posicionX<298){
+            if (posicionX<268){
                 posicionX += delta * .5f;
                 boxpersonaje.setX(posicionX);
             }
@@ -108,7 +108,7 @@ public class MinijuegoCuchillo extends BasicGameState{
         }
         for (int i = balls.size()-1; i >= 0; i--) {
             Circle c = balls.get(i);
-            if (c.getCenterX() > 1070) {
+            if (c.getCenterX() > 1010) {
                 balls.remove(i);
             }else if (c.intersects(boxpersonaje)) {
                 balls.remove(i);
@@ -122,7 +122,7 @@ public class MinijuegoCuchillo extends BasicGameState{
         
         if (Principal.vidasMinijuegoCuchillo <= 0) {
             sbg.enterState(65);
-            posicionX = 1060;
+            posicionX = 1005;
             posicionY = 560;
         }
         
