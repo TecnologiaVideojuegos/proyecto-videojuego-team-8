@@ -5,6 +5,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -18,7 +19,9 @@ public class Recepcion extends BasicGameState{
     boolean sideright=true;
     float characterPositionX = 24,  characterPositionY = 376;
     BasicGameState prevState = Principal.prevState;
-
+    Music pasos;
+    boolean playpasos = false;
+    
     @Override
     public int getID() {
        return 1;
@@ -27,6 +30,7 @@ public class Recepcion extends BasicGameState{
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
        this.recepcion = new Image("res/recepcionlarga.jpg");
+       this.pasos = new Music("res/Pasos.ogg");
        Principal.prevState = this;
        Image[] walkRight = {new Image("res/B.ANIM_1.png"),new Image("res/B.ANIM_2.png"),new Image("res/B.ANIM_3.png"),new Image("res/B.ANIM_4.png"),new Image("res/B.ANIM_5.png"),new Image("res/B.ANIM_6.png"),new Image("res/B.ANIM_7.png")}; 
        Image[] walkLeft = {new Image("res/B.ANIM_1_OPUESTO.png"),new Image("res/B.ANIM_2_OPUESTO.png"),new Image("res/B.ANIM_3_OPUESTO.png"),new Image("res/B.ANIM_4_OPUESTO.png"),new Image("res/B.ANIM_5_OPUESTO.png"),new Image("res/B.ANIM_6_OPUESTO.png"),new Image("res/B.ANIM_7_OPUESTO.png")};
@@ -67,10 +71,14 @@ public class Recepcion extends BasicGameState{
         
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& sideright){ 
             character = nomoveright;
+            pasos.stop();
+            playpasos = false;
             }
         
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& !sideright){
                 character = nomoveleft;
+                pasos.stop();
+                playpasos = false;
             }
         
 
@@ -78,12 +86,18 @@ public class Recepcion extends BasicGameState{
             sideright = true;
             character = moveRight;
             characterPositionX += i * .10f;
+            if (!playpasos){
+                pasos.play();
+                playpasos = true;
+            }
+            
             
         }
         
         if(entrada.isKeyDown(Input.KEY_A)){
             sideright = false;
             character = moveLeft;
+            pasos.play();
             characterPositionX -= i * .10f;
             if (characterPositionX < 32){
                     characterPositionX += i *.1f;
