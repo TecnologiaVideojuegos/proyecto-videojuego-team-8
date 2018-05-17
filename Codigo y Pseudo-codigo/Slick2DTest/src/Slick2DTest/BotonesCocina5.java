@@ -12,8 +12,6 @@ import org.newdawn.slick.state.StateBasedGame;
 public class BotonesCocina5 extends BasicGameState{
     
     private Image cocinabotones;
-    boolean sideright=true;
-    int[] duration = {200,200,200,200};
     private Input entrada;
     BasicGameState prevState = Principal.prevState;
 

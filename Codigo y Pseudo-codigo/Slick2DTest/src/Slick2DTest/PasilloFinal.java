@@ -15,7 +15,7 @@ public class PasilloFinal extends BasicGameState{
     Animation character, moveLeft, moveRight,nomoveright,nomoveleft;
     boolean sideright=true;    
     private Image pasillo;
-    int[] duration = {200,200,200,200};
+    int[] duration = {200,200,200,200,200,200,200};
     private Input entrada;
     float characterPositionX = 24,  characterPositionY = 376;
     BasicGameState prevState = Principal.prevState;
@@ -34,10 +34,10 @@ public class PasilloFinal extends BasicGameState{
        principal = new Principal();
        
        Principal.prevState = this;
-       Image[] walkRight = {new Image("res/B.ANIM_1.png"),new Image("res/B.ANIM_2.png"),new Image("res/B.ANIM_3.png"),new Image("res/B.ANIM_4.png")}; 
-       Image[] walkLeft = {new Image("res/B.ANIM_1_OPUESTO.png"),new Image("res/B.ANIM_2_OPUESTO.png"),new Image("res/B.ANIM_3_OPUESTO.png"),new Image("res/B.ANIM_4_OPUESTO.png")};
-       Image[] nowalkright = {new Image("res/B.STANCE.png"),new Image("res/B.STANCE.png"),new Image("res/B.STANCE.png"),new Image("res/B.STANCE.png")};
-       Image[] nowalkleft = {new Image("res/B.STANCE_OPUESTO.png"),new Image("res/B.STANCE_OPUESTO.png"),new Image("res/B.STANCE_OPUESTO.png"),new Image("res/B.STANCE_OPUESTO.png")};
+       Image[] walkRight = {new Image("res/B.ANIM_1.png"),new Image("res/B.ANIM_2.png"),new Image("res/B.ANIM_3.png"),new Image("res/B.ANIM_4.png"),new Image("res/B.ANIM_5.png"),new Image("res/B.ANIM_6.png"),new Image("res/B.ANIM_7.png")}; 
+       Image[] walkLeft = {new Image("res/B.ANIM_1_OPUESTO.png"),new Image("res/B.ANIM_2_OPUESTO.png"),new Image("res/B.ANIM_3_OPUESTO.png"),new Image("res/B.ANIM_4_OPUESTO.png"),new Image("res/B.ANIM_5_OPUESTO.png"),new Image("res/B.ANIM_6_OPUESTO.png"),new Image("res/B.ANIM_7_OPUESTO.png")};
+       Image[] nowalkright = {new Image("res/B.STANCE.png"),new Image("res/B.STANCE.png"),new Image("res/B.STANCE.png"),new Image("res/B.STANCE.png"),new Image("res/B.STANCE.png"),new Image("res/B.STANCE.png"),new Image("res/B.STANCE.png")};
+       Image[] nowalkleft = {new Image("res/B.STANCE_OPUESTO.png"),new Image("res/B.STANCE_OPUESTO.png"),new Image("res/B.STANCE_OPUESTO.png"),new Image("res/B.STANCE_OPUESTO.png"),new Image("res/B.STANCE_OPUESTO.png"),new Image("res/B.STANCE_OPUESTO.png"),new Image("res/B.STANCE_OPUESTO.png")};
         
        moveRight = new Animation(walkRight, duration, true);
        moveLeft = new Animation(walkLeft,duration,true);
@@ -63,9 +63,9 @@ public class PasilloFinal extends BasicGameState{
         
         entrada = gc.getInput();
         
-        if ((characterPositionX > 1195)&& (principal.isLlave())){
+        if ((characterPositionX > 1195)&& (principal.isCuchillo())){
                 Principal.prevState = this;
-                sbg.enterState(8);
+                sbg.enterState(68);
             }
         
         if ((characterPositionX < -32)){
@@ -78,13 +78,19 @@ public class PasilloFinal extends BasicGameState{
         if ((characterPositionX > 154 && characterPositionX < 256) && 
            (entrada.isKeyDown(Input.KEY_J))){
                 Principal.prevState = this;
-                sbg.enterState(4);
+                sbg.enterState(49);
             }
         
         if ((characterPositionX > 575 && characterPositionX < 680) && 
-           (entrada.isKeyDown(Input.KEY_J))&&(principal.isLlave())){
+           (entrada.isKeyDown(Input.KEY_J))&&(!principal.isCuchillo())&&(Principal.chino)){
                 Principal.prevState = this;
-                sbg.enterState(5);
+                sbg.enterState(64);
+            }
+        
+        if ((characterPositionX > 575 && characterPositionX < 680) && 
+           (entrada.isKeyDown(Input.KEY_J))&&(principal.isCuchillo())){
+                Principal.prevState = this;
+                sbg.enterState(67);
             }
         
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& sideright){ 
@@ -99,7 +105,7 @@ public class PasilloFinal extends BasicGameState{
             sideright = true;
             character = moveRight;
             characterPositionX += i * .10f;
-            if ((characterPositionX > 1195)&& (!principal.isLlave())){
+            if ((characterPositionX > 1195)&& (!principal.isCuchillo())){
                 characterPositionX -= i * .10f;
             }
         }

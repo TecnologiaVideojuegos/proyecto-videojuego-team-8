@@ -13,7 +13,6 @@ public class BotonesCocina1 extends BasicGameState{
     
     private Image cocinabotones;
     boolean sideright=true;
-    int[] duration = {200,200,200,200};
     private Input entrada;
     BasicGameState prevState = Principal.prevState;
 
