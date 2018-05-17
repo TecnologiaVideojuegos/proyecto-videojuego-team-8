@@ -5,6 +5,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -67,6 +68,7 @@ public class HabitacionAgujero3 extends BasicGameState {
         
         if (characterPositionX >= 567 && characterPositionX <= 629 && Principal.tuberia && entrada.isKeyDown(Input.KEY_J)){
             sbg.enterState(33);
+            
         }
         
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)&& sideright){ 

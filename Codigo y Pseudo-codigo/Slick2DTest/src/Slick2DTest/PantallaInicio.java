@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Slick2DTest;
 
 import org.newdawn.slick.geom.*;
@@ -15,10 +11,6 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-/**
- *
- * @author Alvaro
- */
 public class PantallaInicio extends BasicGameState{
 
     private Rectangle rect1 , rect2;
@@ -36,7 +28,7 @@ public class PantallaInicio extends BasicGameState{
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         
-        fondo.drawCentered(683,384);//683 y 384
+        fondo.drawCentered(683,384);
         
     }
 

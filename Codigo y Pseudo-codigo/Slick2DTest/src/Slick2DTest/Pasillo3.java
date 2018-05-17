@@ -63,11 +63,6 @@ public class Pasillo3 extends BasicGameState{
         
         entrada = gc.getInput();
         
-        if (characterPositionX > 1195){
-                Principal.prevState = this;
-                //sbg.enterState(38);
-            }
-        
         if ((characterPositionX < -46)){
                 Principal.prevState = this;
                 sbg.enterState(35);

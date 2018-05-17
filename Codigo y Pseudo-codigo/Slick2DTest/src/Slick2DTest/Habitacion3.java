@@ -5,6 +5,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -18,7 +19,7 @@ public class Habitacion3 extends BasicGameState {
     private Input entrada;
     float characterPositionX = 250,  characterPositionY = 376;
     BasicGameState prevState = Principal.prevState;
-    
+    Music golpe;
     
     @Override
     public int getID() {
@@ -28,8 +29,9 @@ public class Habitacion3 extends BasicGameState {
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
        this.habitacion = new Image("res/habitacion1grieta.jpg");
-       
+       this.golpe = new Music("res/Crash_wall.ogg");
        Principal.prevState = this;
+       
        Image[] walkRight = {new Image("res/B.ANIM_1.png"),new Image("res/B.ANIM_2.png"),new Image("res/B.ANIM_3.png"),new Image("res/B.ANIM_4.png"),new Image("res/B.ANIM_5.png"),new Image("res/B.ANIM_6.png"),new Image("res/B.ANIM_7.png")}; 
        Image[] walkLeft = {new Image("res/B.ANIM_1_OPUESTO.png"),new Image("res/B.ANIM_2_OPUESTO.png"),new Image("res/B.ANIM_3_OPUESTO.png"),new Image("res/B.ANIM_4_OPUESTO.png"),new Image("res/B.ANIM_5_OPUESTO.png"),new Image("res/B.ANIM_6_OPUESTO.png"),new Image("res/B.ANIM_7_OPUESTO.png")};
        Image[] nowalkright = {new Image("res/B.STANCE.png"),new Image("res/B.STANCE.png"),new Image("res/B.STANCE.png"),new Image("res/B.STANCE.png"),new Image("res/B.STANCE.png"),new Image("res/B.STANCE.png"),new Image("res/B.STANCE.png")};
@@ -67,6 +69,7 @@ public class Habitacion3 extends BasicGameState {
         
         if (characterPositionX >= 567 && characterPositionX <= 629 && Principal.tuberia && entrada.isKeyDown(Input.KEY_J)){
             sbg.enterState(47);
+            golpe.play();
             Principal.agujero = true;
         }
         

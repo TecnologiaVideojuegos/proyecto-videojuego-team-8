@@ -5,6 +5,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -15,6 +16,7 @@ public class BotonesCocina4 extends BasicGameState{
     boolean sideright=true;
     private Input entrada;
     BasicGameState prevState = Principal.prevState;
+    Music botonesc;
 
     @Override
     public int getID() {
@@ -23,6 +25,7 @@ public class BotonesCocina4 extends BasicGameState{
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+       botonesc = new Music("res/Correcto.ogg");
        this.cocinabotones = new Image("res/cocina2bgRAN.jpg");
        Principal.prevState = this;
     }
@@ -46,6 +49,7 @@ public class BotonesCocina4 extends BasicGameState{
         if ((posX > 531 && posX < 726) && (posY > 269 && posY < 465)){
             if(Mouse.isButtonDown(0)){
                 sbg.enterState(45);
+                botonesc.play();
             }
         }
         

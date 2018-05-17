@@ -1,11 +1,11 @@
 package Slick2DTest;
 
-import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -21,7 +21,9 @@ public class Habitacion1 extends BasicGameState {
     private Input entrada;
     float characterPositionX = 250,  characterPositionY = 376;
     BasicGameState prevState = Principal.prevState;
-
+    
+    Music fantasma_nina ; 
+    
     public Habitacion1(Principal principal) {
         this.principal = principal;
     }
@@ -36,7 +38,7 @@ public class Habitacion1 extends BasicGameState {
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
        this.habitacion = new Image("res/habitacion1-fantasma.jpg");
-
+       this.fantasma_nina = new Music("res/Fantasma_chica.ogg"); 
        Principal.prevState = this;
        Image[] walkRight = {new Image("res/B.ANIM_1.png"),new Image("res/B.ANIM_2.png"),new Image("res/B.ANIM_3.png"),new Image("res/B.ANIM_4.png"),new Image("res/B.ANIM_5.png"),new Image("res/B.ANIM_6.png"),new Image("res/B.ANIM_7.png")}; 
        Image[] walkLeft = {new Image("res/B.ANIM_1_OPUESTO.png"),new Image("res/B.ANIM_2_OPUESTO.png"),new Image("res/B.ANIM_3_OPUESTO.png"),new Image("res/B.ANIM_4_OPUESTO.png"),new Image("res/B.ANIM_5_OPUESTO.png"),new Image("res/B.ANIM_6_OPUESTO.png"),new Image("res/B.ANIM_7_OPUESTO.png")};
@@ -85,6 +87,7 @@ public class Habitacion1 extends BasicGameState {
         if(characterPositionX >655 && !Principal.nina){
             Principal.nina = true;    
             sbg.enterState(12);
+            fantasma_nina.play();
             characterPositionX = 250;
         }
         

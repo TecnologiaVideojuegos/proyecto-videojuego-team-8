@@ -5,6 +5,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -18,7 +19,8 @@ public class Hall1 extends BasicGameState{
     private Input entrada;
     float characterPositionX = 24,  characterPositionY = 376;
     BasicGameState prevState = Principal.prevState;
-
+    Music fantasmaviejo;
+    
     @Override
     public int getID() {
        return 8;
@@ -26,6 +28,7 @@ public class Hall1 extends BasicGameState{
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+       this.fantasmaviejo = new Music("res/fantasma_hombre.ogg");
        this.hall = new Image("res/hallfantasma.jpg");
        Principal.prevState = this;
        Image[] walkRight = {new Image("res/B.ANIM_1.png"),new Image("res/B.ANIM_2.png"),new Image("res/B.ANIM_3.png"),new Image("res/B.ANIM_4.png"),new Image("res/B.ANIM_5.png"),new Image("res/B.ANIM_6.png"),new Image("res/B.ANIM_7.png")}; 
@@ -61,6 +64,7 @@ public class Hall1 extends BasicGameState{
         if (characterPositionX >760 && !Principal.viejo){
             Principal.viejo = true;
             sbg.enterState(22);
+            fantasmaviejo.play();
             characterPositionX = 700;
             }
         

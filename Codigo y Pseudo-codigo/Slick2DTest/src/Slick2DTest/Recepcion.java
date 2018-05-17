@@ -111,6 +111,7 @@ public class Recepcion extends BasicGameState{
         if(entrada.isKeyDown(Input.KEY_ESCAPE)){
             Principal.prevState = this;
             sbg.enterState(3);
+             pasos.stop();
         }
                
 }
