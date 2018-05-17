@@ -63,11 +63,19 @@ public class MinijuegoLlave extends BasicGameState{
             character = moveRight;
             posicionX += delta * .5f;
             boxpersonaje.setX(posicionX);
+            if(posicionX>1005){
+                posicionX -= delta * .5f;
+                boxpersonaje.setX(posicionX);
+            }
         }
         if (entrada.isKeyDown(Input.KEY_A)) {
             character = moveLeft;
             posicionX -= delta * .5f;
             boxpersonaje.setX(posicionX);
+            if(posicionX<250){
+                posicionX += delta * .5f;
+                boxpersonaje.setX(posicionX);
+            }
         }
         if (!entrada.isKeyDown(Input.KEY_D) && !entrada.isKeyDown(Input.KEY_A)){
             character = nomove;
@@ -76,14 +84,14 @@ public class MinijuegoLlave extends BasicGameState{
         timePassed += delta;
         if (timePassed > 500) {
             timePassed = 0;
-            balls.add(new Circle(200+random.nextInt(400),0,10));
+            balls.add(new Circle(280+random.nextInt(755),84,10));
         }
         for (Circle c : balls) {
-            c.setCenterY(c.getCenterY()+(delta/2f));
+            c.setCenterY(c.getCenterY()+(delta/4f));
         }
         for (int i = balls.size()-1; i >= 0; i--) {
             Circle c = balls.get(i);
-            if (c.getCenterY() > 610) {
+            if (c.getCenterY() > 700) {
                 balls.remove(i);
                 Principal.vidasMinijuegoLlave--;
             }else if (c.intersects(boxpersonaje)) {
@@ -93,17 +101,25 @@ public class MinijuegoLlave extends BasicGameState{
         }
         if (Principal.vidasMinijuegoLlave <= 0) {
             sbg.enterState(10);
+             for (int i = balls.size()-1; i >= 0; i--) {
+            Circle c = balls.get(i);
+            if (c.getCenterY() > 84) {
+                balls.remove(i);
+                
+            }
         }
-         if (Principal.puntuacionMinijuegoLlave >= 30) {
+         if (Principal.puntuacionMinijuegoLlave >= 20) {
             sbg.enterState(11);
+        }
         }
     }
     
+    @Override
     public void render(GameContainer arg0, StateBasedGame arg1, Graphics g){
         this.habitacion.drawCentered(683,384);
         g.drawString(" "+posicionX +" "+posicionY,100,100);
         g.drawString("Estado 1", 10, 50);
-        g.setColor(Color.transparent);
+        g.setColor(Color.yellow);
         g.fill(boxpersonaje);
         this.character.draw(posicionX,posicionY);
         
